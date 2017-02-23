@@ -38,6 +38,9 @@ set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)
 " Theme
 colorscheme Tomorrow-Night-Eighties
 
+" Cursor
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 " Auto-reload
 " So that I can keep tweaking fast!
 if has('autocmd')
