@@ -8,6 +8,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
+Plug 'wincent/command-t', {
+  \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+  \ }
 
 " Initialize plugin system
 call plug#end()
