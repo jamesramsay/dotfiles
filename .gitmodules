@@ -1,0 +1,12 @@
+[submodule "HOME/zsh/pure"]
+	path = HOME/zsh/pure
+	url = git@github.com:sindresorhus/pure.git
+[submodule "HOME/zsh/async"]
+	path = HOME/zsh/async
+	url = git@github.com:mafredri/zsh-async.git
+[submodule "HOME/zsh/zsh-completions"]
+	path = HOME/zsh/zsh-completions
+	url = git@github.com:zsh-users/zsh-completions.git
+[submodule "HOME/zsh/zsh-syntax-highlighting"]
+	path = HOME/zsh/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
