@@ -8,6 +8,8 @@ fpath=( "$HOME/.zfunctions" $fpath )
 autoload -U promptinit; promptinit
 prompt pure
 
+export CLICOLOR=1 # enable file type colors
+
 # syntax highlighting bundle.
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
