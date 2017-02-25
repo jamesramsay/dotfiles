@@ -1,5 +1,8 @@
 *.swp
 
+# ansible
+python
+
 # nvim
 HOME/nvim/.netrwhist
 

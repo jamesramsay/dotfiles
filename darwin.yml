@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  roles:
+    - { role: fonts, tags: ['fonts'] }
+    - { role: terminfo, tags: ['terminfo'] }

@@ -1,0 +1,8 @@
+---
+- name: fonts | create target directory
+  file: dest={{ fonts_path }} state=directory
+
+- name: fonts | install fonts
+  copy: src={{ item }} dest={{ fonts_path }}
+  with_fileglob:
+    - ./*.otf

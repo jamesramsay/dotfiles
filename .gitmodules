@@ -10,3 +10,15 @@
 [submodule "HOME/zsh/zsh-syntax-highlighting"]
 	path = HOME/zsh/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "vendor/ansible"]
+	path = vendor/ansible
+	url = git@github.com:ansible/ansible.git
+[submodule "vendor/terminal-snazzy"]
+	path = vendor/terminal-snazzy
+	url = git@github.com:sindresorhus/terminal-snazzy.git
+[submodule "vendor/virtualenv"]
+	path = vendor/virtualenv
+	url = git@github.com:pypa/virtualenv.git
+[submodule "roles/fonts/files"]
+	path = roles/fonts/files
+	url = git@github.com:jamesramsay/operator-mono.git
