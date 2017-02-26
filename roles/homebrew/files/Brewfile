@@ -1,0 +1,26 @@
+# Based on the output of `brew bundle dump` (which must be run outside of tmux).
+
+cask_args appdir: '/Applications'
+
+brew 'zsh'
+brew 'tmux'
+
+# editor
+brew 'neovim/neovim/neovim'
+# vim-plug
+
+# git
+brew 'git'
+# TODO: git config
+brew 'tig'
+
+# node
+# TODO: n version manager
+brew 'node'
+brew 'yarn'
+
+# utilities
+brew 'ripgrep'
+brew 'the_silver_searcher'
+brew 'jq'
+
