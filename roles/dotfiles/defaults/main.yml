@@ -1,0 +1,9 @@
+---
+dotfiles:
+  - .gitconfig
+  - .gitignore
+  - .npmrc
+  - .tmux.conf
+  - .vimrc
+  - .zshenv
+  - .zshrc

@@ -1,0 +1,6 @@
+*.bak
+*.swp
+*.temp
+*~
+.DS_Store
+\#*\#

@@ -1,14 +1,14 @@
 [submodule "HOME/zsh/pure"]
-	path = HOME/zsh/pure
+	path = roles/dotfiles/files/.zsh/bundles/pure
 	url = git@github.com:sindresorhus/pure.git
 [submodule "HOME/zsh/async"]
-	path = HOME/zsh/async
+	path = roles/dotfiles/files/.zsh/bundles/async
 	url = git@github.com:mafredri/zsh-async.git
 [submodule "HOME/zsh/zsh-completions"]
-	path = HOME/zsh/zsh-completions
+	path = roles/dotfiles/files/.zsh/bundles/zsh-completions
 	url = git@github.com:zsh-users/zsh-completions.git
 [submodule "HOME/zsh/zsh-syntax-highlighting"]
-	path = HOME/zsh/zsh-syntax-highlighting
+	path = roles/dotfiles/files/.zsh/bundles/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
 [submodule "vendor/ansible"]
 	path = vendor/ansible
