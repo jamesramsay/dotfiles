@@ -68,4 +68,3 @@ set shortmess+=t                      " truncate file messages at start
 if has('termguicolors')
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
-

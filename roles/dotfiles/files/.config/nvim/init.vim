@@ -30,3 +30,5 @@ set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)
 " Cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+" Colors
+colorscheme base16-tomorrow-night
