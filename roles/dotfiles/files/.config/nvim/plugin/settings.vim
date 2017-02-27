@@ -36,12 +36,16 @@ set smarttab                          " <tab>/<BS> indent/dedent in leading whit
 set shiftround                        " always indent by a multiple of shift width
 
 set highlight+=@:ColorColumn          " ~/@ at end of window, 'showbreak'
-"set highlight+=N:DiffText             " make current line number stand out a little
-"set highlight+=c:LineNr               " blend vertical separators with line numbers
+set highlight+=N:DiffText             " make current line number stand out a little
+set highlight+=c:LineNr               " blend vertical separators with line numbers
 set laststatus=2                      " always show status line
 set lazyredraw                        " don't bother updating screen during macro playback
 
 if exists('+relativenumber')
   set relativenumber                  " show relative numbers in gutter
+endif
+
+if has('termguicolors')
+  set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
 

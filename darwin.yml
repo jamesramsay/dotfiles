@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   roles:
+    - { role: dotfiles, tags: ['dotfiles'] }
     - { role: homebrew, tags: ['homebrew'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: terminfo, tags: ['terminfo'] }

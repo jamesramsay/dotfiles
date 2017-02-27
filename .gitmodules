@@ -22,3 +22,9 @@
 [submodule "roles/fonts/files"]
 	path = roles/fonts/files
 	url = git@github.com:jamesramsay/operator-mono.git
+[submodule "vendor/vim-plug"]
+	path = vendor/vim-plug
+	url = git@github.com:junegunn/vim-plug.git
+[submodule "roles/dotfiles/files/.zsh/base16-shell"]
+	path = roles/dotfiles/files/.zsh/base16-shell
+	url = git@github.com:jamesramsay/base16-shell.git

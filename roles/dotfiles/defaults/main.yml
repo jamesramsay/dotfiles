@@ -5,5 +5,8 @@ dotfiles:
   - .npmrc
   - .tmux.conf
   - .vimrc
+  - .zsh
   - .zshenv
   - .zshrc
+  - .config/nvim
+  - .config/alacritty
