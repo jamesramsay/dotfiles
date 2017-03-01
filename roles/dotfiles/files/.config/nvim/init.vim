@@ -6,10 +6,20 @@ syntax on
 " Manage plugins using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
+" Colorscheme
 Plug 'chriskempson/base16-vim'
+
+" Required for italics
 Plug 'wincent/pinnacle'
+
+" Async linting
 Plug 'w0rp/ale'
+
+" Editing
 Plug 'tpope/vim-surround'
+
+" Navigiation
+Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
   \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
   \ }
