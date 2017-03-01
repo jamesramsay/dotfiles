@@ -7,7 +7,7 @@ let g:CommandTMaxFiles=100000
 let g:CommandTScanDotDirectories=1
 let g:CommandTTraverseSCM='pwd'
 let g:CommandTWildIgnore=&wildignore
-let g:CommandTWildIgnore.=',*/.git'
+let g:CommandTWildIgnore.=',*/.git,*/node_modules/*'
 
 " Mappings
 
