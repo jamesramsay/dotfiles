@@ -6,17 +6,14 @@ syntax on
 " Manage plugins using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Colorscheme
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'         " Colorscheme
+Plug 'wincent/pinnacle'                " Required for italics
+Plug 'wincent/terminus'                " Improved terminal integration
 
-" Required for italics
-Plug 'wincent/pinnacle'
-
-" Async linting
-Plug 'w0rp/ale'
+Plug 'w0rp/ale'                        " Async linting
 
 " Editing
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'              " Surrounding quotes and parens
 
 " Navigiation
 Plug 'scrooloose/nerdtree'
