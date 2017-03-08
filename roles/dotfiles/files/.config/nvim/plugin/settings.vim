@@ -65,6 +65,16 @@ set shortmess+=a                      " use abbreviations in messages eg. `[RO]`
 set shortmess+=o                      " overwrite file-written messages
 set shortmess+=t                      " truncate file messages at start
 
+if has('linebreak')
+  set linebreak                       " wrap long lines at characters in 'breakat'
+  set breakindent                     " indent wrapped lines to match start
+  let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+
+  if exists('&breakindentopt')
+    set breakindentopt=shift:2        " emphasize broken lines by indenting them
+  endif
+endif
+
 if has('termguicolors')
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
