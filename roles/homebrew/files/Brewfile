@@ -3,15 +3,17 @@
 cask_args appdir: '/Applications'
 
 brew 'zsh'
-brew 'tmux'
 
-# editor
+# Multiplexer
+brew 'tmux'
+brew 'clipper' # improved clipboard
+
+# Editor
 brew 'neovim/neovim/neovim'
 # vim-plug
 
 # git
 brew 'git'
-# TODO: git config
 brew 'tig'
 
 # node
@@ -19,8 +21,9 @@ brew 'tig'
 brew 'node'
 brew 'yarn'
 
-# utilities
+# Utilities
 brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'jq'
+brew 'rename' # bulk file renaming
 
