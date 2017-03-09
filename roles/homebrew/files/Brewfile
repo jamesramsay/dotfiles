@@ -1,12 +1,10 @@
-# Based on the output of `brew bundle dump` (which must be run outside of tmux).
-
 cask_args appdir: '/Applications'
 
 brew 'zsh'
 
 # Multiplexer
 brew 'tmux'
-brew 'clipper' # improved clipboard
+brew 'clipper'               # improved clipboard
 
 # Editor
 brew 'neovim/neovim/neovim'
@@ -25,5 +23,6 @@ brew 'yarn'
 brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'jq'
-brew 'rename' # bulk file renaming
+brew 'rename'                # bulk file renaming
+brew 'watchman'              # file watching, use for vim Command-T
 

@@ -1,7 +1,7 @@
 " Settings
 
 let g:CommandTEncoding='UTF-8'
-let g:CommandTFileScanner='find'
+let g:CommandTFileScanner='watchman'
 let g:CommandTMaxCachedDirectories=10
 let g:CommandTMaxFiles=100000
 let g:CommandTScanDotDirectories=1
