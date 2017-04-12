@@ -28,3 +28,6 @@
 [submodule "roles/dotfiles/files/.zsh/base16-shell"]
 	path = roles/dotfiles/files/.zsh/base16-shell
 	url = git@github.com:jamesramsay/base16-shell.git
+[submodule "roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting"]
+	path = roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting.git

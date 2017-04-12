@@ -40,7 +40,7 @@ export COLORSCHEME_FILE=$HOME/.zsh/base16-shell/scripts/base16-snazzy-dark.sh
 source $COLORSCHEME_FILE
 
 # Syntax highlighting bundle.
-source $HOME/.zsh/bundles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/bundles/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 
 #
