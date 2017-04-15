@@ -9,9 +9,9 @@ function() {
 
     if [[ -e "$FILE" ]]; then
       local BG=$(grep color_background= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
+      local CC=$(grep color18= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
 
       if [ -n "$TMUX" ]; then
-        local CC=$(grep color18= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
         if [ -n "$BG" -a -n "$CC" ]; then
           command tmux set -a window-active-style "bg=#$BG"
           command tmux set -a window-style "bg=#$CC"
@@ -23,6 +23,5 @@ function() {
       echo "Colorscheme not found"
     fi
   fi
-
 }
 

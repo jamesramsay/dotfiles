@@ -85,6 +85,11 @@ else
 fi
 
 #
+# Others
+#
+source $HOME/.zsh/colors
+
+#
 # Cabal
 #
 
