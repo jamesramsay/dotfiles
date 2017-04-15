@@ -26,3 +26,6 @@ brew 'jq'
 brew 'rename'                # bulk file renaming
 brew 'watchman'              # file watching, use for vim Command-T
 
+# Unstable tools
+brew 'jamesramsay/extras/clac'
+
