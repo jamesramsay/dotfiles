@@ -16,6 +16,11 @@ Plug 'w0rp/ale'                        " Async linting
 " Editing
 Plug 'tpope/vim-surround'              " Surrounding quotes and parens
 
+" Markdown
+Plug 'junegunn/goyo.vim'               " Distraction free writing
+Plug 'reedes/vim-pencil'               " Pleasantly write prose
+Plug 'tpope/vim-markdown'              " Syntax highlighting
+
 " Navigiation
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
