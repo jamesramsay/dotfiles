@@ -6,11 +6,12 @@ syntax on
 " Manage plugins using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'chriskempson/base16-vim'         " Colorscheme
-Plug 'wincent/pinnacle'                " Required for italics
-Plug 'wincent/terminus'                " Improved terminal integration
-Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
+" Styling and syntax
+Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
+Plug 'wincent/pinnacle'                                  " Required for italics
+Plug 'wincent/terminus'                                  " Improved terminal integration
 
+Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
 Plug 'w0rp/ale'                        " Async linting
 
 " Editing
