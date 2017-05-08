@@ -36,7 +36,7 @@ export CLICOLOR=1 # enable file type colors
 
 # Color
 # - variable used by color script for setting tmux focus
-export COLORSCHEME_FILE=$HOME/.zsh/base16-shell/scripts/base16-snazzy-dark.sh
+export COLORSCHEME_FILE=$HOME/.zsh/base16-shell/scripts/base16-snazzy.sh
 source $COLORSCHEME_FILE
 
 # Syntax highlighting bundle.
