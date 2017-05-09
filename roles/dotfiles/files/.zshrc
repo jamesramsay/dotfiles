@@ -42,6 +42,10 @@ source $COLORSCHEME_FILE
 # Syntax highlighting bundle.
 source $HOME/.zsh/bundles/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# FZF
+# - prefer ripgrep to native
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 #
 # History

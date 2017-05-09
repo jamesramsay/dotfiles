@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 brew 'zsh'
+brew 'fzf'
 
 # Multiplexer
 brew 'tmux'
