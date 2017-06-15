@@ -20,7 +20,10 @@ Plug 'tpope/vim-surround'              " Surrounding quotes and parens
 " Markdown
 Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'reedes/vim-pencil'               " Pleasantly write prose
-Plug 'tpope/vim-markdown'              " Syntax highlighting
+
+" Syntax
+Plug 'tpope/vim-markdown'
+Plug 'kchmck/vim-coffee-script'
 
 " Navigiation
 Plug 'scrooloose/nerdtree'
