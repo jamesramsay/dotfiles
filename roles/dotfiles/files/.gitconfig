@@ -1,25 +1,35 @@
 [alias]
-      	# Added in Git 1.5.4
-      	p = add -p
-	      patch = add -p
+  # Added in Git 1.5.4
+  p = add -p
+  patch = add -p
 
 [core]
-        excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
-[diff]
-        algorithm = histogram
-
-        # Added in Git 2.9.0 (experimental): more readable diffs.
-	      compactionHeuristic = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [difftool]
-        prompt = false
+  prompt = false
+
+[diff]
+  tool = Kaleidoscope
+
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+
+[mergetool]
+  prompt = false
+
+[merge]
+  tool = Kaleidoscope
 
 [push]
-        # Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
-	      default = simple
+      # Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
+      default = simple
 
 [user]
-        email = git@jwr.vc
-        name = James Ramsay
+      email = git@jwr.vc
+      name = James Ramsay
 
