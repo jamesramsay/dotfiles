@@ -25,6 +25,9 @@ Plug 'reedes/vim-pencil'               " Pleasantly write prose
 Plug 'tpope/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 
+" Organisation and notes
+Plug 'vimwiki/vimwiki'
+
 " Navigiation
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
