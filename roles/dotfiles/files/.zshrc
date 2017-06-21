@@ -2,6 +2,8 @@
 #
 # Performance test:
 #   $ for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
+#
+# 2017-06-20: 120ms (2015 MacBook Air)
 
 #
 # Completions
@@ -88,20 +90,7 @@ else
   export EDITOR='nvim'
 fi
 
-#
-# Others
-#
+# Color functions for focus
 source $HOME/.zsh/colors
 
-#
-# Cabal
-#
-
-export PATH=$PATH:~/.cabal/bin
-
-# Tufte-ness
-# Default uses --latex-engine=pdflatex
-tufte() {
-  pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -s -S --latex-engine=pdflatex --template=/Users/james.ramsay/Development/jwr/pandoc/templates/tufte-latex.template.latex -o $1.pdf $1
-  open $1.pdf
-}
+export PATH="$HOME/.yarn/bin:$PATH"
