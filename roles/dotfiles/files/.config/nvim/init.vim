@@ -24,6 +24,7 @@ Plug 'reedes/vim-pencil'               " Pleasantly write prose
 " Syntax
 Plug 'tpope/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
+Plug 'vito-c/jq.vim'
 
 " Organisation and notes
 Plug 'vimwiki/vimwiki'
