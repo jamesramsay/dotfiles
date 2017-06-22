@@ -12,8 +12,8 @@ let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
 let g:NERDTreeMouseMode=2
 
 if has('autocmd')
-  augroup WincentNERDTree
+  augroup JamsayNERDTree
     autocmd!
-    autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+    autocmd User NERDTreeInit call jamsay#autocmds#attempt_select_last_file()
   augroup END
 endif

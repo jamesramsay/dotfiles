@@ -10,12 +10,12 @@ function s:CheckColorScheme()
   " Allow for overrides:
   " - `statusline.vim` will re-set User1, User2 etc.
   " - `after/plugin/loupe.vim` will override Search.
-  "doautocmd ColorScheme
+  doautocmd ColorScheme
 endfunction
 
 if v:progname !=# 'vi'
   if has('autocmd')
-    augroup WincentAutocolor
+    augroup JamsayAutocolor
       autocmd!
       autocmd FocusGained * call s:CheckColorScheme()
     augroup END
