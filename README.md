@@ -8,6 +8,13 @@
 git clone --recursive https://github.com/jamesramsay/dotfiles.git
 ```
 
+### Dependencies
+
+- [tmux](https://github.com/tmux/tmux)
+- [neovim](https://neovim.io/)
+- fixed-width font that includes the [Powerline glyphs](http://powerline.readthedocs.io/en/master/installation.html#fonts-installation)
+  - You can use Powerline glyphs with any font and iTerm using this trick: http://blog.erikphansen.com/quick-tip-operator-mono-and-powerline/
+
 ### Install
 
 ```
