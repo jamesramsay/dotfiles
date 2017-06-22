@@ -1,0 +1,12 @@
+#
+# Command aliases
+#
+
+# When I think I'm in vim
+alias :q=exit
+alias :wq=exit
+
+# Git
+alias g=git
+alias gs='tig status'
+alias gu=gitup

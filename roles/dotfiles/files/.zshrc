@@ -90,7 +90,7 @@ else
   export EDITOR='nvim'
 fi
 
-# Color functions for focus
+source $HOME/.zsh/aliases
 source $HOME/.zsh/colors
 
 export PATH="$HOME/.yarn/bin:$PATH"
