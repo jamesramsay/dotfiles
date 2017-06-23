@@ -24,6 +24,7 @@ brew 'yarn'
 brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'jq'
+brew 'pv'                    # pipe progress bars
 brew 'rename'                # bulk file renaming
 brew 'watchman'              # file watching, use for vim Command-T
 
