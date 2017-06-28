@@ -5,6 +5,7 @@ dotfiles:
   - .gitignore
   - .npmrc
   - .tigrc
+  - .tmux
   - .tmux.conf
   - .vimrc
   - .zsh

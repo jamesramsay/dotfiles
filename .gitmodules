@@ -31,3 +31,6 @@
 [submodule "roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting"]
 	path = roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting.git
+[submodule "roles/dotfiles/files/.tmux/plugins/tmux-resurrect"]
+	path = roles/dotfiles/files/.tmux/plugins/tmux-resurrect
+	url = git@github.com:tmux-plugins/tmux-resurrect.git
