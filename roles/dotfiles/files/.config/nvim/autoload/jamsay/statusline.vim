@@ -35,7 +35,8 @@ endfunction
 
 function! jamsay#statusline#lhs() abort
   let l:line=jamsay#statusline#gutterpadding()
-  let l:line.=&modified ? '+ ' : '  '
+  " HEAVY BALLOT X - Unicode: U+2718, UTF-8: E2 9C 98
+  let l:line.=&modified ? '✘ ' : '  '
   return l:line
 endfunction
 
