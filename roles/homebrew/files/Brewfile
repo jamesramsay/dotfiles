@@ -27,6 +27,7 @@ brew 'the_silver_searcher'
 brew 'jq'
 brew 'magic-wormhole'                 # magic file transfers
 brew 'pv'                             # pipe progress bars
+brew 'ranger'                         # filemanager with vi keybindings
 brew 'rename'                         # bulk file renaming
 brew 'watchman'                       # file watching, use for vim Command-T
 
