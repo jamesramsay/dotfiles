@@ -1,36 +1,36 @@
-[submodule "HOME/zsh/pure"]
+[submodule "roles/dotfiles/files/.zsh/pure"]
 	path = roles/dotfiles/files/.zsh/bundles/pure
-	url = git@github.com:sindresorhus/pure.git
-[submodule "HOME/zsh/async"]
+	url = https://github.com/sindresorhus/pure.git
+[submodule "roles/dotfiles/files/.zsh/async"]
 	path = roles/dotfiles/files/.zsh/bundles/async
-	url = git@github.com:mafredri/zsh-async.git
-[submodule "HOME/zsh/zsh-completions"]
+	url = https://github.com/mafredri/zsh-async.git
+[submodule "roles/dotfiles/files/.zsh/zsh-completions"]
 	path = roles/dotfiles/files/.zsh/bundles/zsh-completions
-	url = git@github.com:zsh-users/zsh-completions.git
-[submodule "HOME/zsh/zsh-syntax-highlighting"]
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "roles/dotfiles/files/.zsh/zsh-syntax-highlighting"]
 	path = roles/dotfiles/files/.zsh/bundles/zsh-syntax-highlighting
-	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "vendor/ansible"]
 	path = vendor/ansible
-	url = git@github.com:ansible/ansible.git
+	url = https://github.com/ansible/ansible.git
 [submodule "vendor/terminal-snazzy"]
 	path = vendor/terminal-snazzy
-	url = git@github.com:sindresorhus/terminal-snazzy.git
+	url = https://github.com/sindresorhus/terminal-snazzy.git
 [submodule "vendor/virtualenv"]
 	path = vendor/virtualenv
-	url = git@github.com:pypa/virtualenv.git
+	url = https://github.com/pypa/virtualenv.git
 [submodule "roles/fonts/files"]
 	path = roles/fonts/files
-	url = git@github.com:jamesramsay/operator-mono.git
+	url = https://github.com/jamesramsay/operator-mono.git
 [submodule "vendor/vim-plug"]
 	path = vendor/vim-plug
-	url = git@github.com:junegunn/vim-plug.git
+	url = https://github.com/junegunn/vim-plug.git
 [submodule "roles/dotfiles/files/.zsh/base16-shell"]
 	path = roles/dotfiles/files/.zsh/base16-shell
-	url = git@github.com:jamesramsay/base16-shell.git
+	url = https://github.com/jamesramsay/base16-shell.git
 [submodule "roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting"]
 	path = roles/dotfiles/files/.zsh/bundles/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting.git
 [submodule "roles/dotfiles/files/.tmux/plugins/tmux-resurrect"]
 	path = roles/dotfiles/files/.tmux/plugins/tmux-resurrect
-	url = git@github.com:tmux-plugins/tmux-resurrect.git
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
