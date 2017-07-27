@@ -1,30 +1,27 @@
 cask_args appdir: '/Applications'
 
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+tap 'homebrew/core'
+tap 'homebrew/dupes'
+
+brew 'git'
 brew 'zsh'
 brew 'fzf'
-
-# Multiplexer
 brew 'tmux'
-brew 'reattach-to-user-namespace'     # fix MacOS usernamespace issue
-brew 'clipper'                        # improved clipboard
-
-# Editor
+brew 'reattach-to-user-namespace'     # tmux: fix MacOS usernamespace issue
+brew 'clipper', restart_service: true # tmux: improved clipboard
 brew 'neovim/neovim/neovim'
-# vim-plug
-
-# git
-brew 'git'
 brew 'tig'
-
-# node
-# TODO: n version manager
-brew 'node'
 brew 'yarn'
-
-# Utilities
+brew 'proselint'
 brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'jq'
+brew 'httpie'                         # nice HTTP CLI
+brew 'htop'                           # interactive top
+brew 'ctop'                           # top for containers
+brew 'gawk'                           # GNU awk
 brew 'magic-wormhole'                 # magic file transfers
 brew 'pv'                             # pipe progress bars
 brew 'ranger'                         # filemanager with vi keybindings
@@ -34,3 +31,41 @@ brew 'watchman'                       # file watching, use for vim Command-T
 # Unstable tools
 brew 'jamesramsay/extras/clac'
 
+cask 'audio-hijack'
+cask 'beamer'
+cask 'docker'
+cask 'dropbox'
+cask 'gitup'
+cask 'google-chrome'
+cask 'imagealpha'
+cask 'imageoptim'
+cask 'istat-menus'
+cask 'iterm2'
+cask 'keybase'
+cask 'launchbar'
+cask 'little-snitch'
+cask 'mailmate'
+cask 'moom'
+cask 'paw'
+cask 'quitter'
+cask 'https://raw.githubusercontent.com/caskroom/homebrew-cask/be3ca82cc2406fc782d1eaf79fbf3a743f85824d/Casks/sketch.rb' # Sketch 43.2
+cask 'skype'
+cask 'slack'
+cask 'spotify'
+cask 'vanilla'
+cask 'viscosity'
+cask 'vlc'
+
+mas '1Blocker', id: 1107421413
+mas '1Password', id: 443987910
+mas 'Caffeine', id: 411246225
+mas 'DaisyDisk', id: 411643860
+mas 'Deliveries', id: 924726344
+mas 'Fantastical 2', id: 975937182
+mas 'Kaleidoscope', id: 587512244
+mas 'Napkin', id: 581789185
+mas 'PCalc', id: 403504866
+mas 'Table Tool', id: 1122008420
+mas 'The Unarchiver', id: 425424353
+mas 'Tweetbot', id: 557168941
+mas 'Yoink', id: 457622435
