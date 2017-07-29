@@ -11,7 +11,7 @@ brew 'fzf'
 brew 'tmux'
 brew 'reattach-to-user-namespace'     # tmux: fix MacOS usernamespace issue
 brew 'clipper', restart_service: true # tmux: improved clipboard
-brew 'neovim/neovim/neovim'
+brew 'neovim'
 brew 'tig'
 brew 'yarn'
 brew 'proselint'
