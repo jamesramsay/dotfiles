@@ -8,7 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Styling and syntax
 Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
-Plug 'wincent/pinnacle'                                  " Required for italics
+Plug 'wincent/pinnacle', { 'tag': '0.3.1' }              " Required for italics
 Plug 'wincent/terminus'                                  " Improved terminal integration
 
 Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
