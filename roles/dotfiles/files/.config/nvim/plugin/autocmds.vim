@@ -22,6 +22,9 @@ if has('autocmd')
       autocmd BufEnter,FocusGained,VimEnter,WinEnter * call jamsay#autocmds#focus_statusline()
       autocmd FocusLost,WinLeave * call jamsay#autocmds#blur_statusline()
     endif
+
+    " Regenerate spell file
+    autocmd BufWritePost */spell/*.add silent! :mkspell! %
   augroup END
 endif
 
