@@ -1,5 +1,14 @@
 # Changelog
 
+## 2017-07-31
+
+- Fix `tmux` default window name, previously defaulting to `reattach-to-user-namespace`
+- Fix `vim` spell file generation when adding new items
+
+## 2017-07-29
+
+- Require `pinnacle@0.3.1` to prevent status line breaking
+
 ## 2017-07-27
 
 - Update `brewfile` with applications I regularly use
