@@ -7,9 +7,6 @@
 [submodule "roles/dotfiles/files/.zsh/zsh-completions"]
 	path = roles/dotfiles/files/.zsh/bundles/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "roles/dotfiles/files/.zsh/zsh-syntax-highlighting"]
-	path = roles/dotfiles/files/.zsh/bundles/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "vendor/ansible"]
 	path = vendor/ansible
 	url = https://github.com/ansible/ansible.git
