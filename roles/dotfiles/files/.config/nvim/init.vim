@@ -13,8 +13,7 @@ Plug 'wincent/terminus'                                  " Improved terminal int
 
 Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
 Plug 'w0rp/ale'                        " Async linting
-
-" Editing
+Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
 Plug 'tpope/vim-surround'              " Surrounding quotes and parens
 
 " Markdown
