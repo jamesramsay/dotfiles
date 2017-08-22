@@ -8,17 +8,19 @@ tap 'homebrew/dupes'
 brew 'git'
 brew 'zsh'
 brew 'fzf'
-brew 'tmux'
+brew 'tmux'                                 # tmux: terminal multiplexer
 brew 'reattach-to-user-namespace'           # tmux: fix MacOS usernamespace issue
 brew 'clipper', restart_service: true       # tmux: improved clipboard
 brew 'neovim'
 brew 'tig'
-brew 'n'                                    # node: node version management
+brew 'n'                                    # node: version management
 brew 'yarn', args: ['ignore-dependencies']  # node: compatibility with version management
-brew 'proselint'
-brew 'ripgrep'
+brew 'chruby'                               # ruby: version management
+brew 'ruby-install'                         # ruby: install new versions
+brew 'ripgrep'                              # grep alternative
 brew 'the_silver_searcher'
-brew 'jq'
+brew 'exa'                                  # ls alternative
+brew 'jq'                                   # json: command line processor
 brew 'httpie'                               # nice HTTP CLI
 brew 'htop'                                 # interactive top
 brew 'ctop'                                 # top for containers
@@ -28,8 +30,10 @@ brew 'pv'                                   # pipe progress bars
 brew 'ranger'                               # filemanager with vi keybindings
 brew 'rename'                               # bulk file renaming
 brew 'watchman'                             # file watching, use for vim Command-T
+brew 'proselint'
 
 # Unstable tools
+brew 'jamesramsay/extras/lock'              # lock MacOS CLI
 brew 'jamesramsay/extras/clac'
 
 cask 'audio-hijack'

@@ -90,6 +90,15 @@ else
   export EDITOR='nvim'
 fi
 
+#
+# Ruby
+#
+CHRUBY=/usr/local/opt/chruby/share/chruby
+test -e "$CHRUBY/chruby.sh" && . "$CHRUBY/chruby.sh"
+test -e "$CHRUBY/auto.sh" && . "$CHRUBY/auto.sh"
+# use system ruby unless required
+chruby system
+
 source $HOME/.zsh/aliases
 source $HOME/.zsh/colors
 
