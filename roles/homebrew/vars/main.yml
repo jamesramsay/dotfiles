@@ -1,0 +1,100 @@
+---
+app_dir: '/Applications'
+
+taps:
+  - homebrew/core
+  - homebrew/services
+  - caskroom/cask
+  - caskroom/fonts
+
+applications:
+  - name: git                         # git: version control system
+    state: latest
+  - name: tig                         # git: text-mode interface
+  - name: zsh
+  - name: neovim                      # nvim: better than vim
+  - name: tmux                        # tmux: terminal multiplexer
+  - name: reattach-to-user-namespace  # tmux: fix MacOS usernamespace issue
+  - name: clipper                     # tmux: improved clipboard
+  - name: n                           # node: version management
+    state: latest
+  - name: yarn                        # node: package management
+    state: latest
+    options: ['ignore-dependencies']
+  - name: chruby                      # ruby: version management
+  - name: ruby-install                # ruby: version management
+  - name: fzf                         # fuzzy finder
+  - name: ripgrep                     # grep alternative
+  - name: the_silver_searcher         # fast searching
+  - name: exa                         # ls alternative
+  - name: jq                          # json: command line processor
+  - name: httpie                      # http command line tool
+  - name: htop                        # top alternative
+  - name: ctop                        # top for containers
+  - name: gawk                        # GNU awk
+  - name: magic-wormhole              # magic file transfers
+  - name: pv                          # pipe progress bars
+  - name: ranger                      # file manager w/ vim keybindings
+  - name: rename                      # bulk file rename
+  - name: watchman                    # fast file watching, command-t dep
+  - name: proselint
+  - name: jamesramsay/extras/lock     # lock MacOS
+  - name: jamesramsay/extras/clac     # rpn calculator
+
+services:
+  - clipper
+
+casks:
+  - audio-hijack
+  - beamer
+  - docker
+  - dropbox
+  - gitup
+  - google-chrome
+  - imagealpha
+  - imageoptim
+  - istat-menus
+  - iterm2
+  - keybase
+  - launchbar
+  - little-snitch
+  - mailmate
+  - moom
+  - paw
+  - quitter
+  # TODO: ansible homebrew_cask doesn't support cask URLs
+  # - https://raw.githubusercontent.com/caskroom/homebrew-cask/be3ca82cc2406fc782d1eaf79fbf3a743f85824d/Casks/sketch.rb # Sketch 43.2
+  - skype
+  - slack
+  - spotify
+  - vanilla                           # replace with bartender 2?
+  - viscosity
+  - vlc
+
+app_store:
+  - name: 1Blocker
+    id: 1107421413
+  - name: 1Password
+    id: 443987910
+  - name: Caffeine
+    id: 411246225
+  - name: DaisyDisk
+    id: 411643860
+  - name: Deliveries
+    id: 924726344
+  - name: Fantastical 2
+    id: 975937182
+  - name: Kaleidoscope
+    id: 587512244
+  - name: Napkin
+    id: 581789185
+  - name: PCalc
+    id: 403504866
+  - name: Table Tool
+    id: 1122008420
+  - name: The Unarchiver
+    id: 425424353
+  - name: Tweetbot
+    id: 557168941
+  - name: Yoink
+    id: 457622435

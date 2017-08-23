@@ -10,14 +10,40 @@
 - name: homebrew | update Homebrew
   homebrew: update_homebrew=yes
 
-- name: homebrew | tap bundle
-  homebrew_tap: tap=homebrew/bundle state=present
+- name: homebrew | tap repositories
+  homebrew_tap:
+    tap: "{{ item }}"
+    state: present
+  with_items: "{{ taps }}"
 
-- name: homebrew | bundle
-  command: brew bundle chdir=roles/homebrew/files
+- name: homebrew | install applications
+  homebrew:
+    name:  "{{ item.name }}"
+    options: "{% if item.options is defined %}{{ item.options }}{% endif %}"
+    state: "{% if item.state is defined %}{{ item.state }}{% else %}present{% endif %}"
+  with_items: "{{ applications }}"
+
+- name: homebrew | start services
+  command: "brew services start {{ item }}"
+  with_items: "{{ services }}"
+
+- name: homebrew | install casks
+  homebrew_cask:
+    name: "{{ item }}"
+    options: ["appdir={{ app_dir }}"]
+    state: present
+  with_items: "{{ casks }}"
+
+# TODO: use native module once merged
+# https://github.com/ansible/ansible/pull/19768
+- name: homebrew | install MacOS apps
+  mas:
+    id: "{{ item.id }}"
+    state: present
+  with_items: "{{ app_store }}"
 
 - name: homebrew | clean up old versions
-  command: brew cleanup
+  command: brew cleanup --prune=7
 
 - name: homebrew | clean up old casks
   command: brew cask cleanup
