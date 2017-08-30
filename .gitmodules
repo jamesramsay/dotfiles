@@ -18,7 +18,7 @@
 	url = https://github.com/pypa/virtualenv.git
 [submodule "roles/fonts/files"]
 	path = roles/fonts/files
-	url = https://github.com/jamesramsay/operator-mono.git
+	url = https://gitlab.com/jamesramsay/operator-mono.git
 [submodule "vendor/vim-plug"]
 	path = vendor/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
