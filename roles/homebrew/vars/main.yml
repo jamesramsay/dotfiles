@@ -49,6 +49,7 @@ casks:
   - beamer
   - docker
   - dropbox
+  - font-input
   - gitup
   - google-chrome
   - imagealpha
