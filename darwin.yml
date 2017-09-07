@@ -6,3 +6,4 @@
     - { role: fonts, tags: ['fonts'] }
     - { role: iterm2, tags: ['iterm2'] }
     - { role: terminfo, tags: ['terminfo'] }
+    - { role: vim, tags: ['vim'] }

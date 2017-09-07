@@ -31,7 +31,7 @@ Plug 'vimwiki/vimwiki'
 " Navigiation
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+  \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
   \ }
 
 " Initialize plugin system
