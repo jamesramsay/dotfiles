@@ -6,4 +6,6 @@
         force=yes
 
 - name: vim | install neovim support via rubygems
-  gem: name=neovim
+  gem: name=neovim user_install=no
+  become: yes
+  become_user: root
