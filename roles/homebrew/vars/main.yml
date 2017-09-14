@@ -46,12 +46,15 @@ services:
 
 casks:
   - audio-hijack
+  - bartender       # tidier menu bar
   - beamer
+  - choosy          # smarter default browser
   - docker
   - dropbox
   - font-input
   - gitup
   - google-chrome
+  - iina            # better video player
   - imagealpha
   - imageoptim
   - istat-menus
@@ -68,7 +71,6 @@ casks:
   - skype
   - slack
   - spotify
-  # - vanilla   # replace with bartender 2?
   - viscosity
   - vlc
 
@@ -93,6 +95,8 @@ app_store:
     id: 581789185
   - name: PCalc
     id: 403504866
+  - name: Shush
+    id: 496437906
   - name: Table Tool
     id: 1122008420
   - name: The Unarchiver
