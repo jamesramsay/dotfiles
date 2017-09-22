@@ -81,25 +81,14 @@ setopt pushdsilent          # don't print dir stack after pushing/popping
 
 
 #
-# Editor
+# Other
 #
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-#
-# Ruby
-#
-CHRUBY=/usr/local/opt/chruby/share/chruby
-test -e "$CHRUBY/chruby.sh" && . "$CHRUBY/chruby.sh"
-test -e "$CHRUBY/auto.sh" && . "$CHRUBY/auto.sh"
-# use system ruby unless required
-chruby system
 
 source $HOME/.zsh/aliases
 source $HOME/.zsh/colors
+source $HOME/.zsh/exports
+source $HOME/.zsh/path
 
-export PATH="$HOME/.yarn/bin:$PATH"
+CHRUBY=/usr/local/opt/chruby/share/chruby
+test -e "$CHRUBY/chruby.sh" && . "$CHRUBY/chruby.sh"
+test -e "$CHRUBY/auto.sh" && . "$CHRUBY/auto.sh"
