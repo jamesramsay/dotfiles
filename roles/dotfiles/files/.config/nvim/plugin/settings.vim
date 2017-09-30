@@ -40,9 +40,14 @@ set smarttab                          " <tab>/<BS> indent/dedent in leading whit
 set shiftround                        " always indent by a multiple of shift width
 set scrolloff=3                       " start scrolling 3 lines before edge of viewport
 
-set highlight+=@:ColorColumn          " ~/@ at end of window, 'showbreak'
-set highlight+=N:DiffText             " make current line number stand out a little
-set highlight+=c:LineNr               " blend vertical separators with line numbers
+" Avoid use of highligh in nvim ^0.2.0
+if !has('nvim')
+  " Sync with corresponding nvim settings in ~/.config/nvim/plugin/autocmds.vim:
+  set highlight+=@:ColorColumn          " ~/@ at end of window, 'showbreak'
+  set highlight+=N:DiffText             " make current line number stand out a little
+  set highlight+=c:LineNr               " blend vertical separators with line numbers
+endif
+
 set laststatus=2                      " always show status line
 set lazyredraw                        " don't bother updating screen during macro playback
 

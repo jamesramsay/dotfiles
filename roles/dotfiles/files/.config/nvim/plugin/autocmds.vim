@@ -11,6 +11,13 @@ if has('autocmd')
     " Disable paste mode on leaving insert mode.
     autocmd InsertLeave * set nopaste
 
+    if has('nvim')
+      " Sync with corresponding non-nvim settings in ~/.config/nvim/plugin/settings.vim:
+      autocmd ColorScheme * highlight! link NonText ColorColumn
+      autocmd ColorScheme * highlight! link CursorLineNr DiffText
+      autocmd ColorScheme * highlight! link VertSplit LineNr
+    endif
+
     " Make current window more obvious by turning off/adjusting some features in non-current windows.
     if exists('+colorcolumn')
       autocmd BufEnter,FocusGained,VimEnter,WinEnter * if jamsay#autocmds#should_colorcolumn() | let &l:colorcolumn='+' . join(range(0, 254), ',+') | endif
