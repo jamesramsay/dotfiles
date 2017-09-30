@@ -45,6 +45,7 @@ services:
   - clipper
 
 casks:
+  - aerial          # screensaver
   - audio-hijack
   - bartender       # tidier menu bar
   - beamer
