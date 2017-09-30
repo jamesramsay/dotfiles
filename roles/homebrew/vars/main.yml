@@ -71,6 +71,7 @@ casks:
   # - https://raw.githubusercontent.com/caskroom/homebrew-cask/be3ca82cc2406fc782d1eaf79fbf3a743f85824d/Casks/sketch.rb # Sketch 43.2
   - skype
   - slack
+  - soundsource
   - spotify
   - viscosity
   - vlc
