@@ -31,10 +31,13 @@
   tool = Kaleidoscope
 
 [push]
-      # Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
-      default = simple
+  # Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
+  default = simple
 
 [user]
-      email = git@jwr.vc
-      name = James Ramsay
+  email = git@jwr.vc
+  name = James Ramsay
+  signingkey = 0x1BCD63BD7FAF4FBC
 
+[gpg]
+  program = gpg
