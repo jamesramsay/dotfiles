@@ -35,7 +35,7 @@
   default = simple
 
 [user]
-  email = git@jwr.vc
+  email = james@jramsay.com.au
   name = James Ramsay
   signingkey = 0x1BCD63BD7FAF4FBC
 

@@ -3,6 +3,7 @@ dotfiles:
   - .clipper.json
   - .gitconfig
   - .gitignore
+  - .gnupg
   - .npmrc
   - .tigrc
   - .tmux
