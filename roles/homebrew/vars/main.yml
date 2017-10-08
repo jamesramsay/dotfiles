@@ -8,6 +8,8 @@ taps:
   - caskroom/fonts
 
 applications:
+  - name: awscli                      # AWS command line tools
+    state: latest
   - name: git                         # git: version control system
     state: latest
   - name: tig                         # git: text-mode interface
