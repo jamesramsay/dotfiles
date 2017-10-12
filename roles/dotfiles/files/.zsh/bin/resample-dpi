@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Resample retina images to 72 DPI
+# Reference:
+#   http://benalman.com/news/2012/07/fixing-retina-image-scaling/
+#   https://github.com/cowboy/dotfiles/blob/master/bin/resample-dpi
+
+while [[ "$1" ]]; do
+  file="$1"; shift
+
+  # Reduce calls to sips and awk
+  imageAttributes=($(sips "$file" -g dpiWidth -g dpiHeight -g pixelWidth -g pixelHeight | awk '/:/ {print $2}'))
+  dpiWidth=${imageAttributes[0]}
+  dpiHeight=${imageAttributes[1]}
+  pixelWidth=${imageAttributes[2]}
+  pixelHeight=${imageAttributes[3]}
+
+  if [[ "$(echo "$dpiWidth - 72" | bc)" == "0" || "$(echo "$dpiHeight - 72" | bc)" == "0" ]]; then
+    echo "File $(basename "$file") already ${pixelWidth}x${pixelHeight} pixels @ 72 DPI."
+    continue
+  fi
+
+  w=$(echo "$pixelWidth * 72 / $dpiWidth" | bc)
+  h=$(echo "$pixelHeight * 72 / $dpiHeight" | bc)
+
+  echo "Resampling $(basename "$file") to ${w}x${h} pixels @ 72 DPI."
+  sips "$file" -s dpiWidth 72 -s dpiHeight 72 -z $h $w >/dev/null 2>&1
+done
