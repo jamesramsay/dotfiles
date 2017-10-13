@@ -3,11 +3,6 @@
   p = add -p
   patch = add -p
 
-[alias]
-  # GitLab doesn't have Merge Request links yet
-  # https://gitlab.com/gitlab-org/gitlab-ce/issues/2383
-  merge-commit = "!f() { git rev-list $1..HEAD --ancestry-path --merges -1 | xargs git show; }; f"
-
 [core]
   excludesfile = ~/.gitignore
 

@@ -13,6 +13,7 @@ applications:
   - name: git                         # git: version control system
     state: latest
   - name: tig                         # git: text-mode interface
+  - name: git-when-merged             # git: when and why was this merged?
   - name: zsh
   - name: neovim                      # nvim: better than vim
   - name: tmux                        # tmux: terminal multiplexer
