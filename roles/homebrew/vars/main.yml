@@ -74,16 +74,16 @@ services:
   - clipper
 
 casks:
-  - aerial          # screensaver
+  - arq             # backup
   - audio-hijack
   - bartender       # tidier menu bar
   - beamer
-  - choosy          # smarter default browser
   - docker
   - dropbox
   - font-input
   - gitup
   - google-chrome
+  - hazel           # automation
   - iina            # better video player
   - imagealpha
   - imageoptim
