@@ -13,34 +13,60 @@ applications:
   - name: git                         # git: version control system
     state: latest
   - name: tig                         # git: text-mode interface
+    state: latest
   - name: git-when-merged             # git: when and why was this merged?
   - name: zsh
+    state: latest
   - name: neovim                      # nvim: better than vim
+    state: latest
   - name: tmux                        # tmux: terminal multiplexer
+    state: latest
   - name: reattach-to-user-namespace  # tmux: fix MacOS usernamespace issue
   - name: clipper                     # tmux: improved clipboard
+    state: latest
   - name: n                           # node: version management
     state: latest
   - name: yarn                        # node: package management
     state: latest
     options: ['ignore-dependencies']
   - name: chruby                      # ruby: version management
+    state: latest
   - name: ruby-install                # ruby: version management
+    state: latest
   - name: fzf                         # fuzzy finder
+    state: latest
   - name: ripgrep                     # grep alternative
-  - name: the_silver_searcher         # fast searching
+    state: latest
   - name: exa                         # ls alternative
+    state: latest
+  - name: fd                          # find alternative
+    state: latest
   - name: jq                          # json: command line processor
+    state: latest
   - name: httpie                      # http command line tool
+    state: latest
   - name: htop                        # top alternative
+    state: latest
   - name: ctop                        # top for containers
+    state: latest
   - name: gawk                        # GNU awk
+    state: latest
   - name: magic-wormhole              # magic file transfers
+    state: latest
   - name: pv                          # pipe progress bars
+    state: latest
   - name: ranger                      # file manager w/ vim keybindings
+    state: latest
   - name: rename                      # bulk file rename
+    state: latest
   - name: watchman                    # fast file watching, command-t dep
+    state: latest
   - name: proselint
+    state: latest
+  - name: pngquant                    # lossy png compression
+    state: latest
+  - name: zopfli                      # lossless compression, good but slow
+    state: latest
   - name: jamesramsay/extras/lock     # lock MacOS
   - name: jamesramsay/extras/clac     # rpn calculator
 
