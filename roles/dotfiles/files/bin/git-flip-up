@@ -1,0 +1,10 @@
+#!/bin/bash
+# Usage: git-flip-up COMMIT
+# Swap the commit with it's child
+
+PARENT=$(git rev-parse $1)
+TARGET=$(git rev-list --ancestry-path $PARENT..master | tail -1)
+
+git flip-down $TARGET
+
+# TODO: feedback

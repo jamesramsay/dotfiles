@@ -1,0 +1,40 @@
+#!/bin/sh
+# Usage: git-reword TARGET
+# Amend the commit message of an arbitrary commit
+
+TARGET=$(git rev-parse $1)
+HEAD=$(git rev-parse HEAD)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+STASHED_CHANGES=false
+
+# Stash local state
+if [[ `git status --porcelain` ]]; then
+  git stash save --quiet --include-untracked
+  STASHED_CHANGES=true
+fi
+
+git checkout --quiet $TARGET
+
+# Amend the commit message
+git commit --quiet --amend
+
+NEW_COMMIT=$(git rev-parse HEAD)
+
+# Replay commits onto new base
+git rebase --quiet --onto HEAD $TARGET $HEAD
+
+# Update master to reference new head and checkout
+if [ "$BRANCH" != "HEAD" ]; then
+  git update-ref refs/heads/$BRANCH HEAD
+  git checkout --quiet $BRANCH
+fi
+
+# Set ORIG_HEAD so that we can revert
+echo $HEAD > $(git rev-parse --git-dir)/ORIG_HEAD
+
+# TODO: undo history
+
+# Restore working state
+if [ "$STASHED_CHANGES" = true ]; then
+  git stash pop --quiet
+fi

@@ -1,0 +1,40 @@
+#!/bin/bash
+# Usage: git flip-down COMMIT
+# Swap the commit with its parent
+
+TARGET=$(git rev-parse $1)
+HEAD=$(git rev-parse HEAD)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+STASHED_CHANGES=false
+
+# Stash local state
+if [[ `git status --porcelain` ]]; then
+  git stash save --quiet --include-untracked
+  STASHED_CHANGES=true
+fi
+
+# Rebase our target commit on to the parent commits parent
+if ! git rebase --quiet --onto $TARGET~2 $TARGET~1 $TARGET; then
+
+  # Abort if we can't get a clean rebase
+  git rebase --abort
+  exit 1
+
+fi
+
+# Cherry pick the parent commit so that it becomes the child of the target commit
+git cherry-pick $TARGET~1
+
+# Replay commits onto new base
+git rebase --quiet --onto HEAD $TARGET $HEAD
+
+# Set ORIG_HEAD so that we can revert
+echo $HEAD > $(git rev-parse --git-dir)/ORIG_HEAD
+
+# Update master to reference new head and checkout
+if [ "$BRANCH" != "HEAD" ]; then
+  git update-ref refs/heads/$BRANCH HEAD
+  git checkout --quiet $BRANCH
+fi
+
+# TODO: feedback

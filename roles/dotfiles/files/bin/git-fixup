@@ -1,0 +1,43 @@
+#!/bin/bash
+# Usage: git-fixup TARGET
+# Squash the commit with its parent commit
+
+TARGET=$(git rev-parse $1)
+PARENT=$(git rev-parse $1^)
+HEAD=$(git rev-parse HEAD)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+STASHED_CHANGES=false
+
+# Stash local state
+if [[ `git status --porcelain` ]]; then
+  git stash save --include-untracked
+  STASHED_CHANGES=true
+fi
+
+# Reword the commit message with special fixup message
+git checkout --quiet $TARGET
+git commit --quiet --amend -m "fixup! $PARENT"
+
+# Silent interactive rebase
+# Interactive rebase with fixup commit
+# - autosquash: automatically reorder fixup commit to desired location
+# - EDITOR=true: don't open rebase in editor
+# - autostash: push and pop unstaged changes during rebase
+EDITOR=true git rebase $PARENT^ -i --autosquash
+
+# Replay child commits onto the squashed commit
+git rebase --quiet --onto HEAD $TARGET $HEAD
+
+# Update master to reference new head and checkout
+if [ "$BRANCH" != "HEAD" ]; then
+  git update-ref refs/heads/$BRANCH HEAD
+  git checkout --quiet $BRANCH
+fi
+
+# Set ORIG_HEAD so that we can revert
+echo $HEAD > $(git rev-parse --git-dir)/ORIG_HEAD
+
+# Restore working state
+if [ "$STASHED_CHANGES" = true ]; then
+  git stash pop
+fi

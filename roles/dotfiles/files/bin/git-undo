@@ -1,0 +1,16 @@
+#!/bin/bash
+# References:
+# - https://stackoverflow.com/questions/13804967/bash-pop-lines-in-a-file
+HISTORY="$(git rev-parse --show-toplevel)/.git/MY_HISTORY"
+
+if [ -f "$HISTORY" ]; then
+  STATE=$(sed -i '' -e \$$'{w/dev/stdout\n;d;}' $HISTORY)
+  if [ "$STATE" = "" ]; then
+    echo "Nothing to undo"
+    exit 1
+  fi
+
+  # TODO: determin format of history
+  # <commit> <branch name>
+  echo $STATE
+fi

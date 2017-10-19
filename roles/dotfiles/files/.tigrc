@@ -80,8 +80,14 @@ bind generic cc !git commit -v
 bind generic cS !git commit -v -S
 bind generic ca !?@git commit --amend --no-edit
 
-bind generic K view-help
+bind generic H view-help
 bind generic <C-w><C-w> view-next
+
+# Custom commands
+bind main e !git reword %(commit)
+bind main f !@git fixup %(commit)
+bind main J ?@git flip-down %(commit)
+bind main K ?@git flip-up %(commit)
 
 #
 # Color

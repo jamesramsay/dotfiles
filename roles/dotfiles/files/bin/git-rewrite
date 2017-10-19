@@ -1,0 +1,9 @@
+#!/bin/sh
+# Usage: git-rewrite TARGET
+# Rewrite arbitrary commit
+
+TARGET=$(git rev-parse $1)
+TARGET_SHORT=$(git rev-parse --short $1)
+
+GIT_SEQUENCE_EDITOR="sed -i '' 's/^pick $TARGET_SHORT /edit $TARGET_SHORT /'" git rebase -i $TARGET~1
+
