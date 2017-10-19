@@ -1,3 +1,14 @@
+#
+# Settings
+#
+
+# Use diff-highlight for word diffs
+set diff-highlight = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+
+#
+# Keybindings
+#
+
 # Vim-style keybindings for Tig
 
 bind generic h scroll-left
@@ -68,3 +79,12 @@ bind generic ca !?@git commit --amend --no-edit
 
 bind generic K view-help
 bind generic <C-w><C-w> view-next
+
+#
+# Color
+#
+
+# Make is snazzy
+color title-focus  color20 color19 bold
+color title-blur   color20 color19
+color cursor       color18 color11 bold
