@@ -80,8 +80,16 @@ bind generic cc !git commit -v
 bind generic cS !git commit -v -S
 bind generic ca !?@git commit --amend --no-edit
 
-bind generic K view-help
+bind generic H view-help
 bind generic <C-w><C-w> view-next
+
+# Custom commands
+bind main F !@git delorean fixup %(commit)
+bind main X !@git delorean discard %(commit)
+bind main J !@git delorean flip-down %(commit)
+bind main K !@git delorean flip-up %(commit)
+bind main U !@git delorean undo
+bind main R !@git delorean redo
 
 #
 # Color

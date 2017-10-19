@@ -1,0 +1,280 @@
+#!/usr/bin/env bash
+# DeLorean: Git time travel
+#
+# TODO: handling of branch names that are valid commits
+
+DELOREAN="$(basename "$0")"
+USAGE="$(cat <<EOF
+usage: $DELOREAN [-h | --help]
+   or: $DELOREAN discard <sha>       Remove commit <sha> from the current branch
+   or: $DELOREAN fixup <sha>         Fixup the parent of commit <sha>
+   or: $DELOREAN flip-down <sha>     Swap the commit <sha> with the child commit
+   or: $DELOREAN flip-up <sha>       Swap the commit <sha> with the parent commit
+   or: $DELOREAN undo                Undo previous DeLorean time travel operation
+   or: $DELOREAN redo                Redo next DeLorean time travel operation
+EOF
+)"
+
+while getopts ":h" opt; do
+  case ${opt} in
+    h )
+      printf '%s\n' "$USAGE"
+      exit 0
+      ;;
+   \? )
+     printf 'Invalid Option: -%s\n' "$OPTARG" 1>&2
+     exit 1
+     ;;
+  esac
+done
+shift $((OPTIND -1))
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+ORIG_HEAD="$(git rev-parse HEAD)"
+
+DELOREAN_LOGBOOK="$(git rev-parse --show-toplevel)/.git/DELOREAN"
+DELOREAN_BRANCH="$(sed -n 1p "$DELOREAN_LOGBOOK")"
+
+function attach_head() {
+  # After rebasing commits we'll be in a detatched HEAD state. Before we can
+  # continue, we need to tell Git that the current state is the new HEAD of the
+  # branch.
+  if [ "$BRANCH" != "HEAD" ]; then
+    git update-ref "refs/heads/$BRANCH" HEAD
+    git checkout --quiet "$BRANCH"
+  fi
+  return 0
+}
+
+function set_orig_head() {
+  NEW_HEAD="$(git rev-parse HEAD)"
+  printf '%s\n' "$ORIG_HEAD" > "$(git rev-parse --git-dir)/ORIG_HEAD"
+  log_time_travel "$NEW_HEAD" "$ORIG_HEAD"
+  return 0
+}
+
+function jump() {
+  if [ -z "$1" ]; then
+    echo "Expected one parameter: (--forwards | --backwards)"
+    return 1
+  fi
+
+  if [ "$BRANCH" != "$DELOREAN_BRANCH" ]; then
+    printf 'No history for branch %s\nTry branch %s\n' "$BRANCH" "$DELOREAN_BRANCH"
+    exit 1
+  fi
+
+  case "$1" in
+    "--forwards")
+      target="$(tail -n +2 "$DELOREAN_LOGBOOK" | grep "$ORIG_HEAD" -A 1 | sed -n 2p)"
+      ;;
+    "--backwards")
+      target="$(tail -n +2 "$DELOREAN_LOGBOOK" | grep "$ORIG_HEAD" -B 1 | sed -n 1p)"
+      ;;
+  esac
+
+  if [ "$target" = "$ORIG_HEAD" ]; then
+    echo "Nothing to undo!"
+    exit 1
+  elif [ "$target" = "" ]; then
+    echo "Nothing left to redo!"
+    exit 1
+  fi
+
+  git update-ref HEAD "$target" "$ORIG_HEAD"
+
+  return 0
+}
+
+function stash() {
+  if [ -n "$(git status --porcelain)" ]; then
+    git stash push --quiet --include-untracked
+    echo "stashed"
+  fi
+  return 0
+}
+
+function finish() {
+  if [ -n "$HAS_STASHED_CHANGES" ]; then
+    git stash pop --quiet
+  fi
+  return 0
+}
+trap finish EXIT
+
+function log_time_travel() {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Expected two parameters: <new sha> <old sha>"
+    return 1
+  fi
+
+  newsha=$1
+  oldsha=$2
+
+  # Used if same branch and current commit is known
+  logbook=$(sed "/$oldsha/q" "$DELOREAN_LOGBOOK")
+
+  PREV="$(tail -n +2 "$DELOREAN_LOGBOOK" | grep "$ORIG_HEAD" -B 1 | sed -n 1p)"
+  NEXT="$(tail -n +2 "$DELOREAN_LOGBOOK" | grep "$ORIG_HEAD" -A 1 | sed -n 2p)"
+  [ "$BRANCH" != "$DELOREAN_BRANCH" ] && is_new_branch=1
+  [ -z "$PREV" ] && [ -z "$NEXT" ] && is_unknown_sha=1
+
+  if [ -n "$is_new_branch" ] || [ -n "$is_unknown_sha" ]; then
+    # Empty log used for new branch or unknown commit
+    logbook=$(printf '%s\n%s\n' "$BRANCH" "$oldsha")
+  fi
+
+  printf '%s\n%s\n' "$logbook" "$newsha" > "$DELOREAN_LOGBOOK"
+  return 0
+}
+
+subcommand=$1; shift
+case "$subcommand" in
+  "discard")
+    # Remove the target commit, and replay remaining commits onto the new base.
+    #
+    # - target (B): the commit to be removed
+    # - parent (A): the parent of the target commit (B)
+    #
+    target=$1
+    parent="$target~1"
+
+    # House keeping
+    HAS_STASHED_CHANGES="$(stash)"
+
+    # Rebase the descendants of the target commit on to the parent commit
+    #
+    #        (TARGET)
+    #           :
+    #   o---A---B---C---D   (ORIG_HEAD)
+    #        \
+    #         C'---D'
+    #
+    if ! git rebase --quiet --keep-empty --onto "$parent" "$target" "$ORIG_HEAD"; then
+      git rebase --abort
+      exit 1
+    fi
+
+    # House keeping
+    set_orig_head
+    attach_head
+    ;;
+  "fixup")
+    # Fixup the parent commit with the target commit. In other words, the
+    # target and parent commit are squashed into a single commit, and the
+    # commit message of the parent commit is preserved.
+    target=$1
+    parent="$target~1"
+
+    # House keeping
+    HAS_STASHED_CHANGES="$(stash)"
+
+    # Step 1:
+    #   Checkout the target commit (C) and replace the commit message with
+    #   `fixup! <sha>` that can be used by `git rebase --autosquash`
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D   (ORIG_HEAD)
+    #            \
+    #             C'
+    #
+    git checkout --quiet "$target"
+    git commit --quiet --allow-empty --amend --message "fixup! $parent"
+
+    # Step 2:
+    #   Rebase... TODO write the rest of this
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D   (ORIG_HEAD)
+    #        \
+    #         BC'
+    #
+    EDITOR=true git rebase --quiet --keep-empty --interactive --autosquash "$parent~1"
+
+    # Step 3:
+    #   Replay the remaining commits (D) onto the new base (BC')
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D    (ORIG_HEAD)
+    #        \
+    #         BC'---D'
+    #
+    git rebase --quiet --keep-empty --onto HEAD "$target" "$ORIG_HEAD"
+
+    # House keeping
+    set_orig_head
+    attach_head
+    ;;
+  "flip-down")
+    # Swap the target commit with it's parent commit
+    #
+    # - target (C): the commit to be swapped with it's parent commit
+    # - parent (B): the parent of the target commit (C)
+    #
+    target=$1
+    parent="$target~1"
+
+    # House keeping
+    HAS_STASHED_CHANGES="$(stash)"
+
+    # Step 1:
+    #   Rebase the target commit (C) onto the parent of the parent commit (A)
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D    (ORIG_HEAD)
+    #        \
+    #         C'
+    #
+    if ! git rebase --quiet --keep-empty --onto "$parent~1" "$parent" "$target"; then
+      git rebase --abort
+      exit 1
+    fi
+
+    # Step 2:
+    #   Cherry pick the parent commit (B) onto target commit (C') so that it
+    #   becomes the child of the target commit
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D    (ORIG_HEAD)
+    #        \
+    #         C'---B'
+    #
+    git cherry-pick --allow-empty "$parent"
+
+    # Step 3:
+    #   Replay the remaining commits (D) onto the new base (B')
+    #
+    #            (TARGET)
+    #               :
+    #   o---A---B---C---D    (ORIG_HEAD)
+    #        \
+    #         C'---B'---D'
+    #
+    git rebase --quiet --keep-empty --onto HEAD "$target" "$ORIG_HEAD"
+
+    # House keeping
+    set_orig_head
+    attach_head
+    ;;
+  "flip-up")
+    parent=$(git rev-parse "$1")
+    target=$(git rev-list --ancestry-path "$parent..$BRANCH" | tail -1)
+    git delorean flip-down "$target"
+    ;;
+  "undo")
+    jump --backwards
+    ;;
+  "redo")
+    jump --forwards
+    ;;
+  *)
+    printf 'No supported command provided\n\n%s\n\n' "$USAGE"
+    exit 1
+    ;;
+esac
+
