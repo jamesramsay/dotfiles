@@ -31,3 +31,6 @@
 [submodule "roles/dotfiles/files/.tmux/plugins/tmux-resurrect"]
 	path = roles/dotfiles/files/.tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "roles/dotfiles/files/.tmux/plugins/tmux-continuum"]
+	path = roles/dotfiles/files/.tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum.git
