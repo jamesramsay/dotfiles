@@ -104,7 +104,8 @@ casks:
   - soundsource
   - spotify
   - viscosity
-  - vlc
+  - vagrant
+  - vagrant-manager
 
 app_store:
   - name: 1Blocker
