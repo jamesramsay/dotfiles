@@ -12,9 +12,12 @@ applications:
     state: latest
   - name: git                         # git: version control system
     state: latest
+  - name: git-lfs
+    state: latest
   - name: tig                         # git: text-mode interface
     state: latest
   - name: git-when-merged             # git: when and why was this merged?
+    state: latest
   - name: zsh
     state: latest
   - name: neovim                      # nvim: better than vim
@@ -22,6 +25,7 @@ applications:
   - name: tmux                        # tmux: terminal multiplexer
     state: latest
   - name: reattach-to-user-namespace  # tmux: fix MacOS usernamespace issue
+    state: latest
   - name: clipper                     # tmux: improved clipboard
     state: latest
   - name: n                           # node: version management
