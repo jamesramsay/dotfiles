@@ -1,6 +1,8 @@
 SYSTEM_PATH=$PATH
 unset PATH
 
+GOROOT=$HOME/go
+
 # keep these on separate lines to make changing their order easier
 PATH=$HOME/bin
 PATH=$PATH:$HOME/.zsh/bin
@@ -8,4 +10,7 @@ PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:$SYSTEM_PATH
 PATH=$PATH:$HOME/.yarn/bin
+PATH=$PATH:$GOROOT/bin
+
 export PATH
+export GOROOT
