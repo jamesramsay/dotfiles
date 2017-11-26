@@ -21,6 +21,7 @@ Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'reedes/vim-pencil'               " Pleasantly write prose
 
 " Syntax
+Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vito-c/jq.vim'
