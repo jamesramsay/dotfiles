@@ -1,0 +1,1 @@
+Arq -fstype=smbfs,rw,noowners,noatime ://backup:timemachine@10.1.1.3/Arq

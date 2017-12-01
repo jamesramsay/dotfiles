@@ -1,0 +1,16 @@
+---
+- name: autofs | create mountpoint
+  file: path=/mnt state=directory
+
+- name: autofs | update master map
+  lineinfile:
+    dest: '/etc/auto_master'
+    line: '/mnt/Synology		auto_synology'
+
+- name: autofs | create mount map
+  copy:
+    src: '{{ role_path }}/files/auto_synology'
+    dest: '/etc/auto_synology'
+
+- name: autofs | flush cache
+  raw: sudo automount -vc
