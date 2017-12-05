@@ -71,6 +71,8 @@ applications:
     state: latest
   - name: zopfli                      # lossless compression, good but slow
     state: latest
+  - name: tldr                        # Simplified man pages
+    state: latest
   - name: jamesramsay/extras/lock     # lock MacOS
   - name: jamesramsay/extras/clac     # rpn calculator
 
