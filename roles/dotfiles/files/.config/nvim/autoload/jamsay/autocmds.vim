@@ -71,3 +71,14 @@ function! s:get_custom_statusline(action) abort
 
   return 1 " Use default.
 endfunction
+
+function! jamsay#autocmds#idleboot() abort
+  " Make sure we automatically call jamsay#autocmds#idleboot() only once.
+  augroup JamsayIdleboot
+    autocmd!
+  augroup END
+
+  " Make sure we run deferred tasks exactly once.
+  doautocmd User JamsayDefer
+  autocmd! User JamsayDefer
+endfunction

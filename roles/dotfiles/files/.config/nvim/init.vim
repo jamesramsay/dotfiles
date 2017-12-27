@@ -6,7 +6,7 @@ syntax on
 " Manage plugins using vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Styling and syntax
+" Styling
 Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
 Plug 'wincent/pinnacle', { 'tag': '0.3.1' }              " Required for italics
 Plug 'wincent/terminus'                                  " Improved terminal integration
@@ -15,6 +15,12 @@ Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
 Plug 'w0rp/ale'                        " Async linting
 Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
 Plug 'tpope/vim-surround'              " Surrounding quotes and parens
+
+" Autocomplete
+Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocomplete
+Plug 'ervandew/supertab'                                        " Tab to complete
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 " Markdown
 Plug 'junegunn/goyo.vim'               " Distraction free writing
