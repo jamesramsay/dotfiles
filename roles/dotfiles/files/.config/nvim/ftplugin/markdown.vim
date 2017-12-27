@@ -5,7 +5,7 @@ setlocal spell
 setlocal wrap
 
 " Fix funky frontmatter highlighting for Jekyll posts and the like
-let g:vim_markdown_frontmatter=1
+let g:vim_markdown_frontmatter = 1
 
 " Disable syntax concealing
 let g:markdown_syntax_conceal = 0
@@ -16,3 +16,6 @@ let g:markdown_syntax_conceal = 0
 "highlight markdownItalic gui=italic cterm=italic
 
 PencilSoft
+
+let b:ale_markdown_prettier_use_global = 1
+let b:ale_fixers = ['prettier']
