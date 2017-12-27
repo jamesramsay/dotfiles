@@ -6,3 +6,5 @@ python
 # nvim
 HOME/nvim/.netrwhist
 
+# haskell-stack
+/roles/dotfiles/files/.stack
