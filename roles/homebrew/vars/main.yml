@@ -73,6 +73,8 @@ applications:
     state: latest
   - name: tldr                        # Simplified man pages
     state: latest
+  - name: haskell-stack               # Haskell
+    state: latest
   - name: jamesramsay/extras/lock     # lock MacOS
   - name: jamesramsay/extras/clac     # rpn calculator
 
