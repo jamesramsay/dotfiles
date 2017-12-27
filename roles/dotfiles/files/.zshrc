@@ -76,8 +76,6 @@ setopt hist_verify          # confirm history expansion (!$, !!, !foo)
 setopt autocd               # .. is shortcut for cd .. (etc)
 setopt autoparamslash       # tab completing directory appends a slash
 setopt autopushd            # cd automatically pushes old dir onto dir stack
-setopt correct              # command auto-correction
-setopt correctall           # argument auto-correction
 setopt interactivecomments  # allow comments, even in interactive shells
 setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # don't push multiple copies of same dir onto stack
