@@ -6,6 +6,11 @@
 alias :q=exit
 alias :wq=exit
 
+# Neovim
+if command -v nvim &> /dev/null; then
+  alias vim=nvim # Use `\vim` or `command vim` to get the real vim.
+fi
+
 # Git
 alias g=git
 alias gs='tig status'
