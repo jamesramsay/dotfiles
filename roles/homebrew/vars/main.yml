@@ -90,8 +90,10 @@ casks:
   - docker
   - dropbox
   - font-input
+  - font-source-sans-pro
   - gitup
   - google-chrome
+  - google-cloud-sdk
   - hazel           # automation
   - iina            # better video player
   - imagealpha
@@ -103,14 +105,13 @@ casks:
   - launchbar
   - little-snitch
   - mailmate
-  - moom
   - paw
-  - quitter
   # TODO: ansible homebrew_cask doesn't support cask URLs
   # - https://raw.githubusercontent.com/caskroom/homebrew-cask/be3ca82cc2406fc782d1eaf79fbf3a743f85824d/Casks/sketch.rb # Sketch 43.2
   - skype
   - slack
   - soundsource
+  - spectacle
   - spotify
   - viscosity
   - vagrant
