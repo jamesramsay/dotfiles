@@ -34,3 +34,6 @@
 [submodule "roles/dotfiles/files/.tmux/plugins/tmux-continuum"]
 	path = roles/dotfiles/files/.tmux/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum.git
+[submodule "roles/dotfiles/files/.tmux/plugins/vim-tmux-navigator"]
+	path = roles/dotfiles/files/.tmux/plugins/vim-tmux-navigator
+	url = https://ithub.com/christoomey/vim-tmux-navigator.git

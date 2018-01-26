@@ -36,6 +36,7 @@ Plug 'vito-c/jq.vim'
 Plug 'vimwiki/vimwiki'
 
 " Navigiation
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
   \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
