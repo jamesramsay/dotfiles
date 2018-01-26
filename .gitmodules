@@ -1,6 +1,6 @@
 [submodule "roles/dotfiles/files/.zsh/pure"]
 	path = roles/dotfiles/files/.zsh/bundles/pure
-	url = https://github.com/sindresorhus/pure.git
+	url = https://github.com/jamesramsay/pure.git
 [submodule "roles/dotfiles/files/.zsh/async"]
 	path = roles/dotfiles/files/.zsh/bundles/async
 	url = https://github.com/mafredri/zsh-async.git
