@@ -20,6 +20,11 @@ else
   set directory+=.
 endif
 
+if has('windows')
+  set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+  set fillchars+=fold:·             " MIDDLE DOT (U+00B7, UTF-8: C2 B7)
+endif
+
 if exists('&belloff')
   set belloff=all                     " never ring the bell for any reason
 endif
