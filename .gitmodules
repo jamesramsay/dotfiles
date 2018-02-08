@@ -37,3 +37,6 @@
 [submodule "roles/dotfiles/files/.tmux/plugins/vim-tmux-navigator"]
 	path = roles/dotfiles/files/.tmux/plugins/vim-tmux-navigator
 	url = https://ithub.com/christoomey/vim-tmux-navigator.git
+[submodule "roles/dotfiles/files/.zsh/bundles/zsh-autosuggestions"]
+	path = roles/dotfiles/files/.zsh/bundles/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

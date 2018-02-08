@@ -44,15 +44,6 @@ source $COLORSCHEME_FILE
 # Syntax highlighting bundle.
 source $HOME/.zsh/bundles/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# FZF - prefer ripgrep to native
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
-fi
-
-
 #
 # History
 #
@@ -81,15 +72,35 @@ setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # don't push multiple copies of same dir onto stack
 setopt pushdsilent          # don't print dir stack after pushing/popping
 
+#
+# Completions
+#
+
+# FZF - prefer ripgrep to native
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+source $HOME/.zsh/bundles/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(fasd --init auto)"
 
 #
 # Other
 #
 
 source $HOME/.zsh/aliases
+source $HOME/.zsh/bindings
 source $HOME/.zsh/colors
 source $HOME/.zsh/exports
 source $HOME/.zsh/path
+
+#
+# Ruby
+#
 
 CHRUBY=/usr/local/opt/chruby/share/chruby
 test -e "$CHRUBY/chruby.sh" && . "$CHRUBY/chruby.sh"

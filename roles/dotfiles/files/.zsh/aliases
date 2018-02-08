@@ -15,3 +15,6 @@ fi
 alias g=git
 alias gs='tig status'
 alias gu=gitup
+
+# fasd
+alias v='f -e vim'
