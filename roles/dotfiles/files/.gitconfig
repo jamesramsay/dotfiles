@@ -1,61 +1,125 @@
 [alias]
-  # Added in Git 1.5.4
-  p = add -p
-  patch = add -p
+	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+	amend = commit --amend -v
+	br = branch
 
-[core]
-  excludesfile = ~/.gitignore
-  pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+	# Show all branches including remote branches
+	branches = branch -a -v
 
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+	ci = commit -v
+	co = checkout
+	count = !sh -c 'git log --oneline | wc -l'
+	no-edit = commit --amend --no-edit
 
-[difftool]
-  prompt = false
+	# %C(auto) added in Git 1.8.3
+	one = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+	oneline = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 
-[diff]
-  tool = Kaleidoscope
+	# Added in Git 1.5.4
+	p = add -p
+	patch = add -p
 
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
+	# requires Git 1.7.11.3 or later
+	reword = commit --amend --only -v --
 
-[mergetool]
-  prompt = false
+	# "smartlog", although it's not that smart.
+	# Equivalent to `git graph --all --simplify-by-decoration.
+	sl = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset' --all --simplify-by-decoration
 
-[merge]
-  tool = Kaleidoscope
+  # Remove local branches that have merged
+	sweep = !sh -c '`brew --prefix git-clean`/bin/git-clean -l'
 
-[push]
-  # Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
-  default = simple
+[branch]
+	autosetupmerge = always
+	autosetuprebase = local
 
-[user]
-  email = james@jramsay.com.au
-  name = James Ramsay
-  signingkey = 0x1BCD63BD7FAF4FBC
-
-[gpg]
-  program = gpg
+[branch "master"]
+	rebase = true
 
 [color]
-  ui = true
+	ui = auto
 
 [color "diff-highlight"]
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  commit = yellow italic
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = yellow bold
+	frag = magenta bold
+	commit = yellow italic
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "interactive"]
+	prompt = blue reverse
+
+[color "status"]
+	untracked = blue
+
+[core]
+	excludesfile = ~/.gitignore
+	pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[diff]
+	algorithm = histogram
+
+	# Added in Git 2.9.0 (experimental): more readable diffs.
+	compactionHeuristic = true
+	renames = true
+	tool = Kaleidoscope
+
+[difftool]
+	prompt = false
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[gpg]
+	program = gpg
+
+[interactive]
+	diffFilter = diff-highlight
+
+[log]
+	decorate = short
+
+[merge]
+	tool = Kaleidoscope
+
+[mergetool]
+	prompt = false
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[pager]
+	show-branch = true
+	status = true
+
+[push]
+	# Added in Git 1.7.11, default in 2.0, but still required (to avoid warning).
+	default = simple
+
+[rebase]
+	autosquash = true
+
+[status]
+	submodulesummary = true
+
+[submodule]
+	# Added in Git 2.9.0.
+	fetchJobs = 4
+
+[user]
+	email = james@jramsay.com.au
+	name = James Ramsay
+	signingkey = 0x1BCD63BD7FAF4FBC

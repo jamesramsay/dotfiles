@@ -80,6 +80,7 @@ applications:
   - name: jamesramsay/extras/lock     # lock MacOS
   - name: jamesramsay/extras/clac     # rpn calculator
   - name: jamesramsay/extras/qstats   # quick and dirty stats
+  - name: mcasper/formulae/git-clean  # clean up local and remote Git branches
 
 services:
   - clipper
