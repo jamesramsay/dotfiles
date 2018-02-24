@@ -9,9 +9,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Styling
 Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
 Plug 'wincent/pinnacle', { 'tag': '0.3.1' }              " Required for italics
-Plug 'wincent/terminus'                                  " Improved terminal integration
 
+" Integration
+Plug 'wincent/terminus'                " Improved terminal integration
 Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
+Plug 'kopischke/vim-fetch'             " Open files with line and column numbers with a minimum of fuss
+Plug 'christoomey/vim-tmux-navigator'
+
+" Git
+Plug 'tpope/vim-fugitive'              " Git integrations
+Plug 'airblade/vim-gitgutter'          " Show diff status in gutter
+
 Plug 'w0rp/ale'                        " Async linting
 Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
 Plug 'tpope/vim-surround'              " Surrounding quotes and parens
@@ -31,12 +39,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vito-c/jq.vim'
+Plug 'enomsg/vim-haskellConcealPlus'
+Plug 'tpope/vim-sleuth'
 
 " Organisation and notes
 Plug 'vimwiki/vimwiki'
 
 " Navigiation
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'wincent/command-t', {
   \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
