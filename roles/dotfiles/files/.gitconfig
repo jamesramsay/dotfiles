@@ -9,6 +9,10 @@
 	ci = commit -v
 	co = checkout
 	count = !sh -c 'git log --oneline | wc -l'
+
+	# %C(auto) added in Git 1.8.3
+	graph = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+
 	no-edit = commit --amend --no-edit
 
 	# %C(auto) added in Git 1.8.3

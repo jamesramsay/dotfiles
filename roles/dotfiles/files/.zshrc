@@ -92,11 +92,12 @@ eval "$(fasd --init auto)"
 # Other
 #
 
-source $HOME/.zsh/aliases
-source $HOME/.zsh/bindings
-source $HOME/.zsh/colors
-source $HOME/.zsh/exports
-source $HOME/.zsh/path
+source $HOME/.zsh/aliases.zsh
+source $HOME/.zsh/bindings.zsh
+source $HOME/.zsh/colors.zsh
+source $HOME/.zsh/exports.zsh
+source $HOME/.zsh/functions.zsh
+source $HOME/.zsh/path.zsh
 
 #
 # Ruby
