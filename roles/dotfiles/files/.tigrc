@@ -74,8 +74,8 @@ bind generic ul stage-update-line
 bind generic us stage-split-chunk
 
 bind generic c  none
-bind generic cc !git commit
-bind generic cS !git commit -S
+bind generic cc !git commit -v
+bind generic cS !git commit -v -S
 bind generic ca !?@git commit --amend --no-edit
 
 bind generic K view-help

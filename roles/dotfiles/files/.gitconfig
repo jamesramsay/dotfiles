@@ -6,6 +6,7 @@
 	# Show all branches including remote branches
 	branches = branch -a -v
 
+	cs = commit -v -S
 	ci = commit -v
 	co = checkout
 	count = !sh -c 'git log --oneline | wc -l'
@@ -88,9 +89,6 @@
 
 [gpg]
 	program = gpg
-
-[interactive]
-	diffFilter = diff-highlight
 
 [log]
 	decorate = short
