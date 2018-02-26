@@ -1,8 +1,6 @@
 SYSTEM_PATH=$PATH
 unset PATH
 
-GOROOT=$HOME/go
-
 # keep these on separate lines to make changing their order easier
 PATH=$HOME/bin
 
@@ -18,6 +16,9 @@ PATH=$PATH:$SYSTEM_PATH
 PATH=$PATH:$HOME/.yarn/bin
 
 # Go language
+GOPATH=$HOME/go
+GOROOT=/usr/local/opt/go/libexec
+PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$GOROOT/bin
 
 # Haskell Stack
@@ -27,4 +28,5 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/Library/Python/3.6/bin
 
 export PATH
+export GOPATH
 export GOROOT
