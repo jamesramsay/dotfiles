@@ -47,9 +47,8 @@ Plug 'vimwiki/vimwiki'
 
 " Navigiation
 Plug 'scrooloose/nerdtree'
-Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-  \ }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
