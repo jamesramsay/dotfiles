@@ -37,8 +37,6 @@ applications:
     state: latest
   - name: ruby-install                # ruby: version management
     state: latest
-  - name: fasd
-    state: latest
   - name: fzf                         # fuzzy finder
     state: latest
   - name: ripgrep                     # grep alternative

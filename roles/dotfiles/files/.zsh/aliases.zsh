@@ -19,7 +19,6 @@ alias gs='tig status'
 alias gu=gitup
 alias p='git patch'
 alias o='git oneline -10'
-alias v='f -e vim' # fasd
 if command -v nvim &> /dev/null; then
   alias vim=nvim # Use `\vim` or `command vim` to get the real vim.
 fi
