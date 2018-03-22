@@ -23,6 +23,7 @@
 	# Added in Git 1.5.4
 	p = add -p
 	patch = add -p
+	project = !sh -c 'git push --set-upstream git@gitlab.com:jramsay/$(git rev-parse --show-toplevel | xargs basename).git $(git rev-parse --abbrev-ref HEAD) && git remote add origin git@gitlab.com:jramsay/$(git rev-parse --show-toplevel | xargs basename).git'
 
 	# requires Git 1.7.11.3 or later
 	reword = commit --amend --only -v --

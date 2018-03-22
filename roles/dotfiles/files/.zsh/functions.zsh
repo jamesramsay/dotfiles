@@ -1,3 +1,8 @@
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( (( $+commands[$1] )) )
+}
+
 # FZF - git commands
 # Source: https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236
 
@@ -35,7 +40,7 @@ gt() {
 # Depends on `graph` alias for consistent formatting
 gh() {
   is_in_git_repo || return
-  git graph --graph --color=always |
+  git graph --color=always |
   fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |

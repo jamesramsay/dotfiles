@@ -5,6 +5,8 @@
 # Use diff-highlight for word diffs
 set diff-highlight = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
 
+set main-view = id:true date:relative-compact author:full commit-title:yes,graph,refs,overflow=no
+
 #
 # Keybindings
 #
@@ -86,6 +88,13 @@ bind generic <C-w><C-w> view-next
 #
 
 # Make is snazzy
-color title-focus  color20 color19 bold
-color title-blur   color20 color19
-color cursor       color18 color11 bold
+color "author "         cyan    default
+color date              magenta default
+color id                yellow  default
+color main-remote       red     default bold
+color main-tracked      red     default
+color main-ref          green   default bold
+color main-head         green   default
+color title-focus       color20 color19 bold
+color title-blur        color20 color19
+color cursor            color18 color11 bold
