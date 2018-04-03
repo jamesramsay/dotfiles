@@ -90,6 +90,14 @@ if has('linebreak')
   endif
 endif
 
+if has('windows')
+  set splitbelow                      " open horizontal splits below current window
+endif
+
+if has('vertsplit')
+  set splitright                      " open vertical splits to the right of the current window
+endif
+
 if exists('&belloff')
   set belloff=all                     " never ring the bell for any reason
 endif
