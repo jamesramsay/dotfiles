@@ -15,8 +15,6 @@ else
   alias ll='ls -laF'
 fi
 alias g='git'
-alias gs='tig status'
-alias gu=gitup
 alias p='git patch'
 alias o='git oneline -10'
 if command -v nvim &> /dev/null; then

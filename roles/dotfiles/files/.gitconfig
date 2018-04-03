@@ -28,6 +28,8 @@
 	# requires Git 1.7.11.3 or later
 	reword = commit --amend --only -v --
 
+	s = !sh -c 'tig status'
+
 	# "smartlog", although it's not that smart.
 	# Equivalent to `git graph --all --simplify-by-decoration.
 	sl = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset' --all --simplify-by-decoration
