@@ -49,6 +49,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'wincent/ferret'
 
 " Initialize plugin system
 call plug#end()
