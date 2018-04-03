@@ -4,6 +4,7 @@ dotfiles:
   - .gitconfig
   - .gitignore
   - .gnupg
+  - .inputrc
   - .npmrc
   - .tigrc
   - .tmux
