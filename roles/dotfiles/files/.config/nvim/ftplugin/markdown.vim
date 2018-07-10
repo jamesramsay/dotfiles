@@ -18,4 +18,5 @@ let g:markdown_syntax_conceal = 0
 PencilSoft
 
 let b:ale_markdown_prettier_use_global = 1
+let b:ale_markdown_prettier_options = '--prose-wrap always --print-width 80'
 let b:ale_fixers = ['prettier']

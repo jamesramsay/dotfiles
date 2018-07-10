@@ -34,13 +34,14 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'reedes/vim-pencil'               " Pleasantly write prose
 
-" Syntax
+" Languages and Syntax
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 Plug 'vito-c/jq.vim'
 Plug 'enomsg/vim-haskellConcealPlus'
 Plug 'tpope/vim-sleuth'
+Plug 'fatih/vim-go'
 
 " Organisation and notes
 Plug 'vimwiki/vimwiki'
