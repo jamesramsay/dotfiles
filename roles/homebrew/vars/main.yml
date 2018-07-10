@@ -18,6 +18,8 @@ applications:
     state: latest
   - name: git-when-merged             # git: when and why was this merged?
     state: latest
+  - name: patchutils                  # tools for manipulating patch files, e.g. interdiff
+    state: latest
   - name: zsh
     state: latest
   - name: neovim                      # nvim: better than vim
@@ -74,6 +76,10 @@ applications:
   - name: tldr                        # Simplified man pages
     state: latest
   - name: haskell-stack               # Haskell
+    state: latest
+  - name: watch
+    state: latest
+  - name: gnupg
     state: latest
   - name: jamesramsay/extras/lock     # lock MacOS
   - name: jamesramsay/extras/clac     # rpn calculator
