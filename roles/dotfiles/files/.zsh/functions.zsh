@@ -74,3 +74,11 @@ _fzf_complete_git() {
 _fzf_complete_git_post() {
   awk '{print $1}'
 }
+
+# FZF - kubectl
+
+kp() {
+  kubectl get pods --all-namespaces | grep -v 'NAMESPACE' |
+  fzf-down |
+  awk '{if($1=="default") {print $2} else {print $2, "--namespace", $1}}'
+}
