@@ -45,6 +45,7 @@ set expandtab                         " always use spaces instead of tabs
 set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
 set shiftround                        " always indent by a multiple of shift width
 set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+set diffopt=vertical                  " always show diffs side-by-side
 
 " Avoid use of highligh in nvim ^0.2.0
 if !has('nvim')
