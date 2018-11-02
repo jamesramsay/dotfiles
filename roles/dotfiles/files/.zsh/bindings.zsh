@@ -22,5 +22,11 @@ bind-git-helper() {
   done
 }
 
+# Git + FZF bindings
+# - C-g C-f: modified files
+# - C-g C-b: branches
+# - C-g C-t: tags
+# - C-g C-h: history
+# - C-g C-r: remotes
 bind-git-helper f b t r h
 unset -f bind-git-helper
