@@ -102,6 +102,11 @@ if _has fzf && _has rg; then
 fi
 
 #
+# fasd
+#
+eval "$(fasd --init auto)"
+
+#
 # Ruby
 #
 CHRUBY=/usr/local/opt/chruby/share/chruby

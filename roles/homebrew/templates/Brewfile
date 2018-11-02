@@ -15,7 +15,6 @@ tap "mcasper/formulae"
 
 cask "java"
 
-brew "autojump"
 brew "automake"
 brew "gdbm"
 brew "openssl"
