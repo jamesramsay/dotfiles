@@ -132,3 +132,5 @@
 	email = james@jramsay.com.au
 	name = James Ramsay
 	signingkey = 0x1BCD63BD7FAF4FBC
+[credential]
+	helper = osxkeychain
