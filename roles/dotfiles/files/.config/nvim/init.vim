@@ -19,6 +19,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git
 Plug 'tpope/vim-fugitive'              " Git integrations
 Plug 'junegunn/gv.vim'
+Plug 'jreybert/vimagit'
 Plug 'airblade/vim-gitgutter'          " Show diff status in gutter
 
 Plug 'w0rp/ale'                        " Async linting
