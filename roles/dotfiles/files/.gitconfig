@@ -34,7 +34,7 @@
 	# Equivalent to `git graph --all --simplify-by-decoration.
 	sl = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset' --all --simplify-by-decoration
 
-  # Remove local branches that have merged
+	# Remove local branches that have merged
 	sweep = !sh -c '`brew --prefix git-clean`/bin/git-clean -l'
 
 [branch]
@@ -132,5 +132,9 @@
 	email = james@jramsay.com.au
 	name = James Ramsay
 	signingkey = 0x1BCD63BD7FAF4FBC
+
 [credential]
 	helper = osxkeychain
+
+[protocol]
+	version = 2
