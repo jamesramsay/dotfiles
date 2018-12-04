@@ -70,6 +70,9 @@
 	excludesfile = ~/.gitignore
 	pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
 
+[credential]
+	helper = osxkeychain
+
 [diff]
 	algorithm = histogram
 
@@ -93,6 +96,9 @@
 [gpg]
 	program = gpg
 
+[interactive]
+	diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+
 [log]
 	decorate = short
 
@@ -109,6 +115,9 @@
 [pager]
 	show-branch = true
 	status = true
+
+[protocol]
+	version = 2
 
 [pull]
 	# Added in Git 2.0.0, only allow fast-forward merges when pulling
@@ -132,9 +141,3 @@
 	email = james@jramsay.com.au
 	name = James Ramsay
 	signingkey = 0x1BCD63BD7FAF4FBC
-
-[credential]
-	helper = osxkeychain
-
-[protocol]
-	version = 2
