@@ -27,6 +27,9 @@ PATH=$PATH:$HOME/.local/bin
 # Python
 PATH=$PATH:$HOME/Library/Python/3.6/bin
 
+# Postgres (GitLab GDK)
+PATH=$PATH:/usr/local/opt/postgresql@9.6/bin
+
 export PATH
 export GOPATH
 export GOROOT
