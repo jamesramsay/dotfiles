@@ -6,6 +6,8 @@ nnoremap <Leader><Leader> <C-^>
 nnoremap <Leader>q :quit<CR>
 nnoremap <Leader>w :write<CR>
 
+nnoremap <Leader>m :MagitOnly<CR>
+
 " <Leader>r -- cycle through relativenumber + number, number (only), and no numbering (mnemonic: relative)
 nnoremap <silent> <Leader>r :call mappings#cycle_numbering()<CR>
 

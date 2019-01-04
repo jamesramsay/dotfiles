@@ -19,6 +19,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Git
 Plug 'tpope/vim-fugitive'              " Git integrations
 Plug 'airblade/vim-gitgutter'          " Show diff status in gutter
+Plug 'jreybert/vimagit'
 
 Plug 'w0rp/ale'                        " Async linting
 Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
