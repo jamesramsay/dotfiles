@@ -28,7 +28,7 @@
 	# requires Git 1.7.11.3 or later
 	reword = commit --amend --only -v --
 
-	s = !sh -c 'tig status'
+	s = !sh -c 'nvim -c MagitOnly'
 
 	# "smartlog", although it's not that smart.
 	# Equivalent to `git graph --all --simplify-by-decoration.
