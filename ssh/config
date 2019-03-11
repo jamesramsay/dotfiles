@@ -1,0 +1,14 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
+Host gitlab-db
+  User gitlab
+  Hostname postgres01.db.stg.gitlab.com
+  LocalForward 127.0.0.1:5434 127.0.0.1:5432
+
+Host gck
+  Hostname 35.206.112.45
+  LocalForward 3004 127.0.0.1:3000
+  # Hostname 35.231.167.155

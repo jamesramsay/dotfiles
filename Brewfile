@@ -1,0 +1,147 @@
+cask_args appdir: '/Applications'
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "jamesramsay/extras"
+brew "automake"
+brew "awscli"
+brew "bats"
+brew "bfg"
+brew "bison"
+brew "chruby"
+brew "clipper", restart_service: true
+brew "cmake"
+brew "coreutils"
+brew "exa"
+brew "fasd"
+brew "fd"
+brew "fzf"
+brew "gawk"
+brew "gdbm"
+brew "git"
+brew "git-lfs"
+brew "git-when-merged"
+brew "gnu-tar"
+brew "gnupg"
+brew "go"
+brew "gron"
+brew "haskell-stack"
+brew "hopenpgp-tools"
+brew "hopenpgp-tools"
+brew "httpie"
+brew "hub"
+brew "hugo"
+brew "icu4c"
+brew "icu4c"
+brew "imagemagick"
+brew "jq"
+brew "libiconv"
+brew "libssh2"
+brew "libu2f-host"
+brew "libxml2"
+brew "libyaml"
+brew "lsyncd"
+brew "magic-wormhole"
+brew "mas"
+brew "n"
+brew "neovim"
+brew "openssl"
+brew "optipng"
+brew "patchutils"
+brew "pinentry-mac"
+brew "pius"
+brew "pkg-config"
+brew "pngcrush"
+brew "pngquant"
+brew "postgresql@9.6", restart_service: true
+brew "proselint"
+brew "pv"
+brew "python"
+brew "re2"
+brew "readline"
+brew "reattach-to-user-namespace"
+brew "redis", restart_service: true
+brew "rename"
+brew "ripgrep"
+brew "ruby-install"
+brew "scw"
+brew "shellcheck"
+brew "swig"
+brew "telnet"
+brew "tig"
+brew "tldr"
+brew "tmux"
+brew "wget"
+brew "yamllint"
+brew "ykpers"
+brew "ykman", link: false
+brew "youtube-dl"
+brew "zeromq"
+brew "zopfli"
+brew "zsh"
+brew "jamesramsay/extras/bat"
+brew "jamesramsay/extras/clac"
+brew "jamesramsay/extras/lock"
+brew "jamesramsay/extras/qstats"
+brew "mcasper/formulae/git-clean"
+cask "1password"
+cask "1password-cli"
+cask "alacritty"
+cask "audio-hijack"
+cask "bartender"
+cask "beamer"
+cask "docker"
+cask "dropbox"
+cask "firefox"
+cask "font-fira-code"
+cask "font-input"
+cask "font-source-sans-pro"
+cask "gitup"
+cask "google-chrome"
+cask "google-cloud-sdk"
+cask "hazel"
+cask "iina"
+cask "imagealpha"
+cask "imageoptim"
+cask "istat-menus"
+cask "java"
+cask "karabiner-elements"
+cask "keybase"
+cask "launchbar"
+cask "little-snitch"
+cask "mailmate"
+cask "proxyman"
+cask "sketch"
+cask "skype"
+cask "slack"
+cask "soundsource"
+cask "spectacle"
+cask "spotify"
+cask "transmission"
+cask "zoomus"
+mas "1Blocker", id: 1107421413
+mas "Amphetamine", id: 937984704
+mas "Browser Fairy", id: 483014855
+mas "Create Booklet 2", id: 1350225911
+mas "DaisyDisk", id: 411643860
+mas "Deliveries", id: 924726344
+mas "Fantastical", id: 975937182
+mas "FruitJuice", id: 671736912
+mas "HazeOver", id: 430798174
+mas "iA Writer", id: 775737590
+mas "Kaleidoscope", id: 587512244
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "PCalc", id: 403504866
+mas "Shush", id: 496437906
+mas "Table Tool", id: 1122008420
+mas "The Unarchiver", id: 425424353
+mas "ToothFairy", id: 1191449274
+mas "Tweetbot", id: 557168941
+mas "WhatsApp", id: 1147396723
+mas "Xcode", id: 497799835
+mas "Yoink", id: 457622435

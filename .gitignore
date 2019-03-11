@@ -1,10 +1,9 @@
-*.swp
-
-# ansible
-python
-
-# nvim
-HOME/nvim/.netrwhist
-
-# haskell-stack
-/roles/dotfiles/files/.stack
+/ssh/id_*
+/ssh/id_rsa
+/ssh/*_rsa*
+/ssh/known_hosts
+/gnupg/*.d/
+/gnupg/*.db
+/gnupg/*.gpg
+/gnupg/*.kbx
+/gnupg/*.private.*

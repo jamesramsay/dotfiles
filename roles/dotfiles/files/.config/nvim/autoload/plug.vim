@@ -1,1 +1,0 @@
-/Users/james/dotfiles/vendor/vim-plug/plug.vim

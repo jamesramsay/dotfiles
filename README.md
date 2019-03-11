@@ -1,38 +1,52 @@
 # dotfiles
 
-## Installation
+My dotfiles for ZSH, tmux and vim, influenced by many, particularly [Greg Hurrell](https://github.com/wincent/winncent).
 
-### Clone
+* Target platforms: macOS
+* Setup method: shell script based on [Mike McQuaid's](https://github.com/MikeMcQuaid/dotfiles), plays nice with [strap](https://github.com/MikeMcQuaid/strap).
 
-```
-git clone --recursive https://github.com/jamesramsay/dotfiles.git
-```
+## Usage
 
-### Dependencies
+Run [`script/setup`](script/setup) after checkout.
 
-- [tmux](https://github.com/tmux/tmux)
-- [neovim](https://neovim.io/)
-- fixed-width font that includes the [Powerline glyphs](http://powerline.readthedocs.io/en/master/installation.html#fonts-installation)
-  - You can use Powerline glyphs with any font and iTerm using this trick: http://blog.erikphansen.com/quick-tip-operator-mono-and-powerline/
+This will symlink everything in this directory to your home directory.
 
-### Install
+## Features
 
-```
-./install        # installs everything on the local machine
-./install --help # info on installing specific roles, force-installing etc
-```
+Characteristics include:
 
-This sets up a local Python environment using the bundled virtualenv, bootstraps Ansible, and then uses Ansible to copy the dotfiles and configure the machine.
+* Sane Vim pasting via bracketed paste mode.
+* Write access to local clipboard from local and remote hosts, inside and outside of tmux (via [Clipper](https://github.com/wincent/clipper)).
+* Full mouse support (pane/split resizing, scrolling, text selection) in Vim and tmux.
+* Focus/lost events for Vim inside tmux.
+* Cursor shape toggles on entering Vim.
+* Italics in the terminal.
+* Conservative Vim configuration (very few overrides of core functionality; most changes are unobtrusive enhancements; some additional functionality exposed via `<Leader>` and `<LocalLeader>` mappings.
+* Relatively restrained Zsh config
 
-As a fallback strategy, in case the `install` script fails, you can symlink the dotfiles by hand with a command like the following:
+Prompt is a minimal fork of [Pure](https://github.com/sindresohrus/pure).
 
-```
-for DOTFILE in $(find roles/dotfiles/files -maxdepth 1 -name '.*' | tail -n +2); do
-  ln -sf $PWD/$DOTFILE ~
-done
-```
+Convenient Zsh features/functions include:
 
-**Note:** The `ln -sf` command will overwrite existing files, but will fail to overwrite existing directories.
+- `Ctrl-t` [fzf](https://github.com/jungunn/fzf) file search
+- ?? fzf + git
+- ?? fasd
+
+## Dependencies
+
+A brief list of important dependencies, listed in full in the [`Brewfile`](brewfile):
+
+* [Alacritty](http://github.com/jwilm/alacritty/), the fastest terminal emulator.
+* [tmux](http://tmux.sourceforge.net/) 2.X or later.
+* [Neovim](https://neovim.io/) 0.3 or later.
+- [Zsh](http://www.zsh.org/) 5.6 or later.
+- [Git](http://git-scm.com/)
+* [Clipper](https://wincent.com/products/clipper) for transparent access to the local system clipboard
+* Fixed-width font that includes the [Powerline glyphs](http://powerline.readthedocs.io/en/master/installation.html#fonts-installation).
+
+## License
+
+Unless otherwise noted, the contents of this repo are in the public domain. See the [LICENSE](LICENSE.md) for details.
 
 ## Author
 
