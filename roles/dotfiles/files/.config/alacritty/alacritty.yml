@@ -1,5 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
+# https://github.com/jwilm/alacritty/issues/2112
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -58,16 +59,16 @@ tabspaces: 8
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Operator Mono
+    family: Operator Mono for Powerline
     style: Book
 
   bold:
-    family: Operator Mono
-    style: Bold
+    family: Operator Mono for Powerline
+    style: Medium
 
   italic:
-    family: Operator Mono
-    style: Light Italic
+    family: Operator Mono for Powerline
+    style: Book Italic
 
   # Point size of the font
   size: 14.0
@@ -107,8 +108,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
-    foreground: '0xe2e4e5'
+    background: '0xffffff'
+    foreground: '0x4d4d4c'
 
     # Bright and dim foreground colors
     #
@@ -123,30 +124,30 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    text: '0x282a36'
-    cursor: '0xe2e4e5'
+    text: '0xffffff'
+    cursor: '0x4d4d4c'
 
   # Normal colors
   normal:
-    black:   '0x282a36'
-    red:     '0xff5c57'
-    green:   '0x5af78e'
-    yellow:  '0xf3f99d'
-    blue:    '0x57c7ff'
-    magenta: '0xff6ac1'
-    cyan:    '0x9aedfe'
-    white:   '0xe2e4e5'
+    black:   '0xffffff'
+    red:     '0xc82829'
+    green:   '0x718c00'
+    yellow:  '0xeab700'
+    blue:    '0x4271ae'
+    magenta: '0x8959a8'
+    cyan:    '0x3e999f'
+    white:   '0x4d4d4c'
 
   # Bright colors
   bright:
-    black:   '0x78787e'
-    red:     '0xff9f43'
-    green:   '0x34353e'
-    yellow:  '0x43454f'
-    blue:    '0xa5a5a9'
-    magenta: '0xeff0eb'
-    cyan:    '0xb2643c'
-    white:   '0xf1f1f0'
+    black:   '0x8e908c'
+    red:     '0xf5871f'
+    green:   '0xe0e0e0'
+    yellow:  '0xd6d6d6'
+    blue:    '0x969896'
+    magenta: '0x282a2e'
+    cyan:    '0xa3685a'
+    white:   '0x1d1f21'
 
   # Dim colors
   #
@@ -246,7 +247,7 @@ mouse:
     #   - (macOS) open
     #   - (Linux) xdg-open
     #   - (Windows) explorer
-    #launcher: xdg-open
+    launcher: open
 
     # URL modifiers
     #
