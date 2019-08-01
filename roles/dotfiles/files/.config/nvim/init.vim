@@ -7,6 +7,7 @@ syntax on
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Styling
+Plug 'rakr/vim-one'
 Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
 Plug 'wincent/pinnacle', { 'tag': '0.3.1' }              " Required for italics
 
@@ -70,4 +71,5 @@ set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Colors
-colorscheme base16-tomorrow-night
+colorscheme one
+set background=light

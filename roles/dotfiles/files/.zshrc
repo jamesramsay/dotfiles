@@ -24,22 +24,16 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 # Colorize completions using default `ls` colors.
 zstyle ':completion:*' list-colors ''
 
-
 #
 # Prompt
 # - Pure, Sindre Sorhus
-#
-
 fpath=($HOME/.zsh/functions $fpath)
 autoload -U promptinit; promptinit
 prompt pure
 
-export CLICOLOR=1 # enable file type colors
-
 # Color
-# - variable used by color script for setting tmux focus
-export COLORSCHEME_FILE=$HOME/.zsh/base16-shell/scripts/base16-snazzy.sh
-source $COLORSCHEME_FILE
+# TODO: move back to shell driven color control rather than emulator
+export CLICOLOR=1 # enable file type colors
 
 # Syntax highlighting bundle.
 source $HOME/.zsh/bundles/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -81,6 +75,8 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
 fi
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
 
 #
 # Other
