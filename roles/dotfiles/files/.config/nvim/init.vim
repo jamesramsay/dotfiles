@@ -21,6 +21,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'              " Git integrations
 Plug 'airblade/vim-gitgutter'          " Show diff status in gutter
 Plug 'jreybert/vimagit'
+Plug 'junegunn/gv.vim'
 
 Plug 'w0rp/ale'                        " Async linting
 Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
@@ -35,6 +36,7 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 " Markdown
 Plug 'junegunn/goyo.vim'               " Distraction free writing
 Plug 'reedes/vim-pencil'               " Pleasantly write prose
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Languages and Syntax
 Plug 'pangloss/vim-javascript'
