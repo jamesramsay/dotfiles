@@ -8,7 +8,7 @@ if exists('$SUDO_USER')
   set nowritebackup                   " don't create root-owned files
 else
   set backup
-  set backupdir=~/local/.vim/tmp/backup
+  set backupdir=~/.local/vim/tmp/backup
   set backupdir+=~/.vim/tmp/backup    " keep backup files out of the way
   set backupdir+=.
 endif
@@ -16,9 +16,17 @@ endif
 if exists('$SUDO_USER')
   set noswapfile                      " don't create root-owned files
 else
-  set directory=~/local/.vim/tmp/swap//
-  set directory+=~/.vim/tmp/swap//    " keep swap files out of the way
+  set directory=~/.local/vim/tmp/swap
+  set directory+=~/.vim/tmp/swap    " keep swap files out of the way
   set directory+=.
+endif
+
+set hid
+if exists('undodir')
+  set undofile
+  set undodir=~/.local/vim/tmp/undo
+  set undodir+=~/.vim/tmp/undo
+  set undodir+=.
 endif
 
 if has('windows')
