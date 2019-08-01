@@ -77,3 +77,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " Colors
 colorscheme one
 set background=light
+
+" Vimwiki
+au BufNewFile ~/Dropbox/vimwiki/diary/*.md :silent 0r !~/.config/nvim/bin/generate-vimiwiki-template.py '%'
