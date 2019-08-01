@@ -57,6 +57,10 @@ Plug 'wincent/ferret'
 " Initialize plugin system
 call plug#end()
 
+" Performance
+set ttyfast
+set lazyredraw
+
 " Messages, Info, Status
 set laststatus=2            " allways show status line
 set confirm                 " Y-N-C prompt if closing with unsaved changes.
