@@ -288,10 +288,12 @@ live_config_reload: true
 # Default:
 #   - (Linux/macOS) /bin/bash --login
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: /usr/local/bin/zsh
+  args:
+    - --login
+    - -c
+    - 'tmux attach || tmux new'
 
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: true
