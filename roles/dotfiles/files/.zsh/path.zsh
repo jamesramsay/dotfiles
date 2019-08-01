@@ -2,7 +2,7 @@ SYSTEM_PATH=$PATH
 unset PATH
 
 # keep these on separate lines to make changing their order easier
-PATH=$HOME/bin
+PATH=$HOME/.bin
 
 # Zsh scripts and utils
 PATH=$PATH:$HOME/.zsh/bin
@@ -28,8 +28,11 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/Library/Python/3.6/bin
 
 # Postgres (GitLab GDK)
-PATH=$PATH:/usr/local/opt/postgresql@9.6/bin
+PATH=$PATH:/usr/local/opt/postgresql@10/bin
+
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/icu4c/lib/pkgconfig
 
 export PATH
 export GOPATH
 export GOROOT
+export PKG_CONFIG_PATH
