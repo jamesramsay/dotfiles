@@ -12,16 +12,19 @@ PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:$SYSTEM_PATH
 
-# Yarn global path
+# Rust
+PATH=$PATH:$HOME/.cargo/bin
+
+# Yarn
 PATH=$PATH:$HOME/.yarn/bin
 
-# Go language
+# Go
 GOPATH=$HOME/go
 GOROOT=/usr/local/opt/go/libexec
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$GOROOT/bin
 
-# Haskell Stack
+# Haskell
 PATH=$PATH:$HOME/.local/bin
 
 # Python

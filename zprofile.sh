@@ -1,1 +1,2 @@
-export PATH="$HOME/.cargo/bin:$PATH"
+# Load shared shell configuration
+source ~/.shprofile
