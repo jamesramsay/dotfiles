@@ -50,5 +50,9 @@ Unless otherwise noted, the contents of this repo are in the public domain. See 
 
 ## Author
 
-This repo is maintained by James Ramsay and is based on the repo by Greg Hurrell (https://github.com/wincent/wincent).
+This repo is maintained by James Ramsay.
 
+With thanks to:
+
+- [Greg Hurrell](https://github.com/wincent/wincent) for his helpful [YouTube series](https://www.youtube.com/channel/UCXPHFM88IlFn68OmLwtPmZA)
+- [Mike McQuaid](https://github.com/MikeMcQuaid/dotfiles) for his tidy repo and simple setup scripts 
