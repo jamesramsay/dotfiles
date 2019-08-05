@@ -6,7 +6,6 @@ if has('statusline')
   set statusline+=%{jamsay#statusline#lhs()}
   set statusline+=%*                                 " Reset highlight group.
   set statusline+=%4*                                " Switch to User4 highlight group (Powerline arrow).
-  set statusline+=                                  " Powerline arrow.
   set statusline+=%*                                 " Reset highlight group.
   set statusline+=\                                  " Space.
   set statusline+=%<                                 " Truncation point, if not enough width available.
@@ -31,7 +30,6 @@ if has('statusline')
   set statusline+=%=   " Split point for left and right groups.
 
   set statusline+=\                                 " Space.
-  set statusline+=                                 " Powerline arrow.
   set statusline+=%5*                               " Switch to User5 highlight group.
   set statusline+=%{jamsay#statusline#rhs()}
   set statusline+=%*                                " Reset highlight group.
