@@ -8,6 +8,7 @@ template = """# {date}
 
 ## Important work
 
+* [ ] Hiring
 * [ ] Top strategy issue
 * [ ] Top customer issue
 * [ ] Planning
