@@ -67,6 +67,8 @@
 	untracked = blue
 
 [core]
+	# Added in Git 2.18.0
+	commitGraph = true
 	excludesfile = ~/.gitignore
 	pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
 
