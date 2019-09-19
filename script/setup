@@ -5,6 +5,9 @@ DOTFILESDIRREL=$(dirname "$0")
 cd "$DOTFILESDIRREL/.." || exit
 DOTFILESDIR=$(pwd -P)
 
+# Initialize submodules
+git -C "$DOTFILESDIR" submodule update --init
+
 [ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
