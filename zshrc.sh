@@ -108,7 +108,7 @@ fi
 # Ruby
 #
 CHRUBY=/usr/local/opt/chruby/share/chruby
-if _has $CHRUBY; then
-  test -e "$CHRUBY/chruby.sh" && . "$CHRUBY/chruby.sh"
-  test -e "$CHRUBY/auto.sh" && . "$CHRUBY/auto.sh"
+if [ -d "$CHRUBY" ]; then
+  test -e "$CHRUBY/chruby.sh" && source "$CHRUBY/chruby.sh"
+  test -e "$CHRUBY/auto.sh" && source "$CHRUBY/auto.sh"
 fi
