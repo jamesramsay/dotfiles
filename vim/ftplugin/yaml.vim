@@ -1,0 +1,1 @@
+call jamsay#functions#spell()
