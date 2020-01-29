@@ -1,4 +1,5 @@
 " Leader mappings.
+let mapleader = ","
 
 " <Leader><Leader> -- Open last buffer.
 nnoremap <Leader><Leader> <C-^>
