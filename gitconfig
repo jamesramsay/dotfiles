@@ -145,3 +145,5 @@
 	signingkey = 0x1BCD63BD7FAF4FBC
 [gc]
 	writeCommitGraph = true
+[gitlab]
+	username = jramsay
