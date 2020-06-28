@@ -1,0 +1,25 @@
+name: install
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Validate syntax
+      run: bash -n *.sh
+
+    - name: Test script/setup
+      run: bash script/setup
+
+    - name: Test bashrc
+      run: bash -c "source ~/.bashrc"
+
+    - name: Test zshrc
+      run: zsh -c "source ~/.zshrc"
