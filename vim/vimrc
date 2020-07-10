@@ -47,7 +47,3 @@ end
 filetype indent plugin on
 syntax on
 
-
-" Colors
-colorscheme one
-set background=light

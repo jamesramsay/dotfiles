@@ -1,3 +1,8 @@
+" Colors
+colorscheme one
+set background=light
+let g:one_allow_italics = 1 " I love italic for comments
+
 function s:CheckColorScheme()
   if !has('termguicolors')
     let g:base16colorspace=256
