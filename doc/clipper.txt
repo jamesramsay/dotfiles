@@ -1,0 +1,248 @@
+*clipper.txt* Clipper plug-in for Vim                       *clipper* *vim-clipper*
+
+CONTENTS                                                     *clipper-contents*
+
+ 1. Intro           |clipper-intro|
+ 2. Installation    |clipper-installation|
+ 3. Commands        |clipper-commands|
+ 4. Options         |clipper-options|
+ 5. Functions       |clipper-functions|
+ 6. Mappings        |clipper-mappings|
+ 7. Website         |clipper-website|
+ 8. License         |clipper-license|
+ 9. Authors         |clipper-authors|
+10. History         |clipper-history|
+
+
+INTRO                                                           *clipper-intro*
+
+    "clipper (noun)
+    an instrument for cutting or trimming small pieces off things."
+
+                                                             *clipper-features*
+vim-clipper provides integration between Vim and Clipper
+(https://github.com/wincent/clipper), which is an macOS "launch agent" that
+runs in the background providing a service that exposes the local clipboard to
+tmux sessions and other processes running both locally and remotely.
+
+Specifically, vim-clipper provides a |:Clip| command, to send the last-yanked
+text to Clipper, it sets up a <leader>y mapping that calls |:Clip|.
+Additionally, if the |TextYankPost| |autocommand| is available, it will send
+the last-yanked text to Clipper automatically.
+
+
+INSTALLATION                                             *clipper-installation*
+
+To install vim-clipper, use your plug-in management system of choice.
+
+If you don't have a "plug-in management system of choice", I recommend
+Pathogen (https://github.com/tpope/vim-pathogen) due to its simplicity and
+robustness. Assuming that you have Pathogen installed and configured, and that
+you want to install vim-clipper into `~/.vim/bundle`, you can do so with: >
+
+  git clone https://github.com/wincent/vim-clipper.git ~/.vim/bundle/vim-clipper
+
+Alternatively, if you use a Git submodule for each Vim plug-in, you could do
+the following after `cd`-ing into the top-level of your Git superproject: >
+
+  git submodule add https://github.com/wincent/vim-clipper.git ~/vim/bundle/vim-clipper
+  git submodule init
+
+To generate help tags under Pathogen, you can do so from inside Vim with: >
+
+  :call pathogen#helptags()
+
+
+COMMANDS                                                     *clipper-commands*
+
+                                                                        *:Clip*
+:Clip       Sends the last-yanked text to Clipper.
+
+
+OPTIONS                                                       *clipper-options*
+
+                                                             *g:ClipperAddress*
+  |g:ClipperAddress|                                string (default: localhost)
+
+  Specifies the address at which to connect to the Clipper daemon. To override
+  from the default of "localhost", set it in your |.vimrc|. The main reason
+  you would want to do this is to make Clipper connect to a UNIX domain
+  socket: >
+
+    let g:ClipperAddress=~/.clipper.sock
+<
+  Note that if you want to connect using a UNIX domain socket, you must also
+  set |g:ClipperPort| to 0.
+
+  If |g:ClipperAddress| and |g:ClipperPort| provide insufficient
+  configurability (for example, because you are using a version of `nc` that
+  doesn't support UNIX sockets and want to use an alternative like
+  `socat - UNIX-CLIENT:$SOCKET`), then you can use |clipper#set_invocation()|
+  to provide an entirely custom string.
+
+                                                                *g:ClipperPort*
+  |g:ClipperPort|                                        number (default: 8377)
+
+  Specifies the port on which to connect to the Clipper daemon. To override
+  from the default of port 8377, set it in your |.vimrc|: >
+
+    let g:ClipperPort=31337
+<
+  To connect via a UNIX domain socket, set the port number to 0, and provide
+  the path to the socket using the |g:ClipperAddress| option.
+
+  If |g:ClipperAddress| and |g:ClipperPort| provide insufficient
+  configurability (for example, because you are using a version of `nc` that
+  doesn't support UNIX sockets and want to use an alternative like
+  `socat - UNIX-CLIENT:$SOCKET`), then you can use |clipper#set_invocation()|
+  to provide an entirely custom string.
+
+                                                                *g:ClipperAuto*
+  |g:ClipperAuto|                                          boolean (default: 1)
+
+  Controls whether to use the |TextYankPost| autocommand to route yanked text
+  to Clipper automatically. To prevent this, set to 0 in your |.vimrc|: >
+
+    let g:ClipperAuto=0
+<
+                                                                 *g:ClipperMap*
+  |g:ClipperMap|                                           boolean (default: 1)
+
+  Controls whether to set up the |<Plug>(ClipperClip)| mapping. To prevent any
+  mapping from being configured, set to 0 in your |.vimrc|: >
+
+    let g:ClipperMap=0
+<
+                                                              *g:ClipperLoaded*
+  |g:Clipper|                                                  any (no default)
+
+  To prevent vim-clipper from being loaded, set |g:ClipperLoaded| to any value
+  in your |.vimrc|. For example: >
+
+    let g:ClipperLoaded=1
+
+
+FUNCTIONS                                                   *clipper-functions*
+
+
+  |clipper#set_invocation()|                         *clipper#set_invocation()*
+
+  Provide a completely custom string to invoke an arbitrary executable with
+  arguments. This overrides the automatic invocation that would usually be
+  created using `nc` and the values of |g:ClipperAddress| and |g:ClipperPort|.
+  This may be necessary in environments where you want to use a UNIX domain
+  socket but the local version of `nc` does not support the `-U` switch. For
+  example: >
+
+    call clipper#set_invocation('socat - UNIX-CLIENT:/path/to/socket')
+<
+  Note: This is a function and not a setting for security reasons; only the
+  first call to |clipper#set_invocation()| will have any effect. In this way,
+  you can place the call near the start of your |vimrc| without having to
+  worry that a malicious plug-in will later overwrite it with something
+  nefarious (important because whatever is passed to this function will be
+  blindly executed with the |system()| function).
+
+  As such, even if you don't want to use this feature, it is a good
+  idea to lock it down by calling `clipper#set_invocation('')` in your
+  |vimrc|.
+
+
+MAPPINGS                                                     *clipper-mappings*
+
+                                                            *<Plug>ClipperClip*
+                                                          *<Plug>(ClipperClip)*
+vim-clipper maps <leader>y to |<Plug>(ClipperClip)|, which sends the last-yanked
+text to Clipper. To use an alternative mapping instead, create a different one
+in your |.vimrc| instead using |:nmap|: >
+
+  " Instead of <leader>y, use <leader>x.
+  nmap <leader>x <Plug>(ClipperClip)
+
+Note that vim-clipper will not try to set up its <leader>y mapping if any of
+the following are true:
+
+- A mapping for <leader>y already exists.
+- An alternative mapping for |<Plug>(ClipperClip)| has already been set up from
+  a |.vimrc|.
+- The mapping has been suppressed by setting |g:ClipperMap| to 1 in your
+  |.vimrc|.
+
+
+WEBSITE                                                       *clipper-website*
+
+The official vim-clipper source code repo is at:
+
+  http://git.wincent.com/vim-clipper.git
+
+A mirror exists at:
+
+  https://github.com/wincent/vim-clipper
+
+Official releases are listed at:
+
+  http://www.vim.org/scripts/script.php?script_id=5217
+
+
+LICENSE                                                       *clipper-license*
+
+Copyright 2015-present Greg Hurrell. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+
+AUTHORS                                                       *clipper-authors*
+
+vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
+
+
+HISTORY                                                       *clipper-history*
+
+master (not yet released):
+
+- Attempt to autodetect when host platform's `nc` executable requires the `-N`
+  switch (https://github.com/wincent/vim-clipper/pull/3).
+
+2.1 (6 March 2019)
+
+- Add ability to customize invocation with |clipper#set_invocation()|.
+
+2.0 (25 August 2017)
+
+- Add ability to automatically send yanked text to Clipper using the
+  |TextYankPost| autocommand, and the corresponding |g:ClipperAuto| setting to
+  provide an opt-out mechanism.
+
+1.0 (3 June 2016)
+
+- Rename |<Plug>ClipperClip| to |<Plug>(ClipperClip)|.
+- Add |g:ClipperAddress| and support for connecting to the Clipper daemon via
+  a UNIX domain socket.
+
+0.1 (6 July 2015)
+
+- Initial release, extracted from my dotfiles
+  (https://github.com/wincent/wincent).
+
+
+-----------------------------------------------------------------------------
+vim:tw=78:ft=help:
