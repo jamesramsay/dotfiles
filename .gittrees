@@ -1,0 +1,134 @@
+[subtree "git-subtrees"]
+ref = develop
+path = opt/git-subtrees
+url = https://gitlab.com/jramsay/git-subtrees.git
+
+[subtree "deoplete"]
+ref = master
+path = vim/pack/bundle/opt/deoplete
+url = https://github.com/Shougo/deoplete.nvim.git
+
+[subtree "deoplete-lsp"]
+ref = master
+path = vim/pack/bundle/opt/deoplete-lsp
+url = https://github.com/Shougo/deoplete-lsp.git
+
+[subtree "ferret"]
+ref = master
+path = vim/pack/bundle/opt/ferret
+url = https://github.com/wincent/ferret.git
+
+[subtree "fzf"]
+ref = master
+path = vim/pack/bundle/opt/fzf.vim
+url = https://github.com/junegunn/fzf.vim.git
+
+[subtree "nvim-lsp"]
+ref = master
+path = vim/pack/bundle/opt/nvim-lsp
+url = https://github.com/neovim/nvim-lsp.git
+
+[subtree "pinnacle"]
+ref = master
+path = vim/pack/bundle/opt/pinnacle
+url = https://github.com/wincent/pinnacle.git
+
+[subtree "supertab"]
+ref = master
+path = vim/pack/bundle/opt/supertab
+url = https://github.com/ervandew/supertab.git
+
+[subtree "terminus"]
+ref = master
+path = vim/pack/bundle/opt/terminus
+url = https://github.com/wincent/terminus.git
+
+[subtree "vimiwiki"]
+ref = master
+path = vim/pack/bundle/opt/vimwiki
+url = https://github.com/vimwiki/vimwiki.git
+
+[subtree "vim-clipper"]
+ref = master
+path = vim/pack/bundle/opt/vim-clipper
+url = https://github.com/wincent/vim-clipper.git
+
+[subtree "vim-dispatch"]
+ref = master
+path = vim/pack/bundle/opt/vim-dispatch
+url = https://github.com/tpope/vim-dispatch.git
+
+[subtree "vim-dispatch-neovim"]
+ref = master
+path = vim/pack/bundle/opt/vim-dispatch-neovim
+url = https://github.com/radenling/vim-dispatch-neovim.git
+
+[subtree "vim-eunuch"]
+ref = master
+path = vim/pack/bundle/opt/vim-eunuch
+url = https://github.com/tpope/vim-eunuch.git
+
+[subtree "vim-fetch"]
+ref = master
+path = vim/pack/bundle/opt/vim-fetch
+url = https://github.com/wsdjeg/vim-fetch.git
+
+[subtree "vim-fugitive"]
+ref = master
+path = vim/pack/bundle/opt/vim-fugitive
+url = https://github.com/tpope/vim-fugitive.git
+
+[subtree "vim-git"]
+ref = master
+path = vim/pack/bundle/opt/vim-git
+url = https://github.com/tpope/vim-git.git
+
+[subtree "vim-go"]
+ref = master
+path = vim/pack/bundle/opt/vim-go
+url = https://github.com/fatih/vim-go.git
+
+[subtree "vim-javascript"]
+ref = master
+path = vim/pack/bundle/opt/vim-javascript
+url = https://github.com/pangloss/vim-javascript.git
+
+[subtree "vim-json"]
+ref = master
+path = vim/pack/bundle/opt/vim-json
+url = https://github.com/elzr/vim-json.git
+
+[subtree "vim-markdown"]
+ref = master
+path = vim/pack/bunlde/opt/vim-markdown
+url = https://github.com/plasticboy/vim-markdown.git
+
+[subtree "vim-one"]
+ref = master
+path = vim/pack/bundle/opt/vim-one
+url = https://github.com/rakr/vim-one.git
+
+[subtree "vim-signify"]
+ref = master
+path = vim/pack/bundle/opt/vim-signify
+url = https://github.com/mhinz/vim-signify.git
+
+[subtree "vim-sleuth"]
+ref = master
+path = vim/pack/bundle/opt/vim-sleuth
+url = https://github.com/tpope/vim-sleuth.git
+
+[subtree "vim-surround"]
+ref = master
+path = vim/pack/bundle/opt/vim-surround
+url = https://github.com/tpope/vim-surround.git
+
+[subtree "vim-tmux-navigator"]
+ref = master
+path = vim/pack/bundle/opt/vim-tmux-navigator
+url = https://github.com/christoomey/vim-tmux-navigator.git
+
+[subtree "vim-yaml"]
+ref = master
+path = vim/pack/bundle/opt/vim-yaml
+url = https://github.com/mrk21/yaml-vim.git

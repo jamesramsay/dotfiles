@@ -1,8 +1,7 @@
 SYSTEM_PATH=$PATH
 unset PATH
 
-# keep these on separate lines to make changing their order easier
-PATH=$HOME/.bin
+PATH=$HOME/.opt/bin
 
 # Zsh scripts and utils
 PATH=$PATH:$HOME/.zsh/bin
