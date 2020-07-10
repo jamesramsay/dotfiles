@@ -7,4 +7,3 @@
 /gnupg/*.gpg
 /gnupg/*.kbx
 /gnupg/*.private.*
-/vim/tmp/
