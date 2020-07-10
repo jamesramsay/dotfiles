@@ -51,6 +51,3 @@ syntax on
 " Colors
 colorscheme one
 set background=light
-
-" Vimwiki
-au BufNewFile ~/Dropbox/vimwiki/diary/*.md :silent 0r !~/.config/nvim/bin/generate-vimiwiki-template.py '%'
