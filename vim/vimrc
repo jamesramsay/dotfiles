@@ -20,20 +20,27 @@ if &loadplugins
       packadd! nvim-lsp " Configurations for common language servers
     end
 
-    packadd! pinnacle " Manipulate highlight groups for italics
-    packadd! supertab              " Tab to complete
-    packadd! terminus " Improved terminal integration
-    packadd! vim-one " Light color scheme
-    packadd! vim-clipper " Integrate MacOS clipboard the lazy way
-    packadd! vim-dispatch " Async Git push
-    packadd! vim-dispatch-neovim " Use neovim's terminal emulator
-    packadd! vim-eunuch                " UNIX helpers including move and rename
-    packadd! vim-fetch " Open files with line and column numbers
-    packadd! vim-fugitive " Git integrations
-    packadd! vim-signify " Git diff status in the gutter
-    packadd! vim-surround             " Surrounding quotes and parens
+    packadd! pinnacle             " Manipulate highlight groups for italics
+    packadd! supertab             " Tab to complete
+    packadd! terminus             " Improved terminal integration
+    packadd! vimwiki              " Organisation and notes
+    packadd! vim-one              " Light color scheme
+    packadd! vim-clipper          " Integrate MacOS clipboard the lazy way
+    packadd! vim-dispatch         " Async Git push
+    packadd! vim-dispatch-neovim  " Use neovim's terminal emulator
+    packadd! vim-eunuch           " UNIX helpers including move and rename
+    packadd! vim-fetch            " Open files with line and column numbers
+    packadd! vim-fugitive         " Git integrations
+    packadd! vim-git
+    packadd! vim-go
+    packadd! vim-javascript
+    packadd! vim-json
+    packadd! vim-markdown
+    packadd! vim-signify          " Git diff status in the gutter
+    packadd! vim-sleuth           " Automatically set shiftwidth and expandtab
+    packadd! vim-surround         " Surrounding quotes and parens
     packadd! vim-tmux-navigator
-    packadd! vimwiki " Organisation and notes
+    packadd! vim-yaml
   else
     " TODO: implement fallback for normal vim, like pathogen
   end
@@ -46,4 +53,3 @@ end
 " package "ftdetect" directories won't be evaluated.
 filetype indent plugin on
 syntax on
-
