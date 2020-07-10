@@ -3,8 +3,10 @@ function s:CheckColorScheme()
     let g:base16colorspace=256
   endif
 
+  if jamsay#pinnacle#active()
+    execute 'highlight Comment ' . pinnacle#italicize('Comment')
+  endif
 
-  execute 'highlight Comment ' . pinnacle#italicize('Comment')
   execute 'highlight link EndOfBuffer ColorColumn'
 
   " Allow for overrides:
