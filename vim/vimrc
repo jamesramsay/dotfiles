@@ -2,6 +2,10 @@ if v:progname == 'vi'
   set noloadplugins
 endif
 
+" Leader mappings.
+let mapleader = ","
+let maplocalleader = "\\"
+
 " fzf setup
 set rtp+=/usr/local/opt/fzf
 
