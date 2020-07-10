@@ -54,8 +54,9 @@ set smarttab                          " <tab>/<BS> indent/dedent in leading whit
 set shiftround                        " always indent by a multiple of shift width
 set scrolloff=3                       " start scrolling 3 lines before edge of viewport
 set diffopt=vertical                  " always show diffs side-by-side
+set noemoji                           " don't assume all emoji are double width
 
-" Avoid use of highligh in nvim ^0.2.0
+" Avoid use of highlight in nvim ^0.2.0
 if !has('nvim')
   " Sync with corresponding nvim settings in ~/.config/nvim/plugin/autocmds.vim:
   set highlight+=@:ColorColumn          " ~/@ at end of window, 'showbreak'
