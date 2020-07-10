@@ -134,6 +134,10 @@
 	# Added in Git 2.9.0.
 	fetchJobs = 4
 
+[trace2]
+	# Added in Git 2.22, allows analysis of performance trends
+	eventTarget = /Users/jramsay/.git_events.log
+
 [user]
 	email = james@jramsay.com.au
 	name = James Ramsay
