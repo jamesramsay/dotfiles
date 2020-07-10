@@ -1,67 +1,48 @@
+if v:progname == 'vi'
+  set noloadplugins
+endif
+
+" fzf setup
+set rtp+=/usr/local/opt/fzf
+
+if &loadplugins
+  if has('packages')
+    packadd! deoplete  " Autocomplete
+    packadd! deoplete-lsp " Deoplete LSP integration
+    packadd! ferret " Improved multi-file search
+    packadd! fzf.vim
+
+    if has('nvim')
+      packadd! nvim-lsp " Configurations for common language servers
+    end
+
+    packadd! pinnacle " Manipulate highlight groups for italics
+    packadd! supertab              " Tab to complete
+    packadd! terminus " Improved terminal integration
+    packadd! vim-one " Light color scheme
+    packadd! vim-clipper " Integrate MacOS clipboard the lazy way
+    packadd! vim-dispatch " Async Git push
+    packadd! vim-dispatch-neovim " Use neovim's terminal emulator
+    packadd! vim-eunuch                " UNIX helpers including move and rename
+    packadd! vim-fetch " Open files with line and column numbers
+    packadd! vim-fugitive " Git integrations
+    packadd! vim-signify " Git diff status in the gutter
+    packadd! vim-surround             " Surrounding quotes and parens
+    packadd! vim-tmux-navigator
+    packadd! vimwiki " Organisation and notes
+  else
+    " TODO: implement fallback for normal vim, like pathogen
+  end
+end
+
 " Automatic, language-dependent indentation, syntax coloring and other
 " functionality.
+"
+" Must come *after* the `:packadd!` calls above otherwise the contents of
+" package "ftdetect" directories won't be evaluated.
 filetype indent plugin on
 syntax on
 
-" Manage plugins using vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
-
-" Styling
-Plug 'rakr/vim-one'
-Plug 'jamesramsay/base16-vim', { 'branch': 'extended' }  " Colorscheme
-Plug 'wincent/pinnacle', { 'tag': '0.3.1' }              " Required for italics
-
-" Integration
-Plug 'wincent/terminus'                " Improved terminal integration
-Plug 'wincent/vim-clipper'             " Integrate OS X clipper the lazy way
-Plug 'kopischke/vim-fetch'             " Open files with line and column numbers with a minimum of fuss
-Plug 'christoomey/vim-tmux-navigator'
-
-" Git
-Plug 'tpope/vim-fugitive'              " Git integrations
-Plug 'airblade/vim-gitgutter'          " Show diff status in gutter
-Plug 'jreybert/vimagit'
-Plug 'junegunn/gv.vim'
-
-Plug 'w0rp/ale'                        " Async linting
-Plug 'tpope/vim-eunuch'                " UNIX helpers including move and rename
-Plug 'tpope/vim-surround'              " Surrounding quotes and parens
-
-" Autocomplete
-Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocomplete
-Plug 'ervandew/supertab'                                        " Tab to complete
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-" Markdown
-Plug 'junegunn/goyo.vim'               " Distraction free writing
-Plug 'reedes/vim-pencil'               " Pleasantly write prose
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-" Languages and Syntax
-Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-markdown'
-Plug 'kchmck/vim-coffee-script'
-Plug 'vito-c/jq.vim'
-Plug 'enomsg/vim-haskellConcealPlus'
-Plug 'tpope/vim-sleuth'
-Plug 'fatih/vim-go'
-
-" Organisation and notes
-Plug 'vimwiki/vimwiki'
-
-" Navigiation
-Plug 'scrooloose/nerdtree'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'wincent/ferret'
-
-" Initialize plugin system
-call plug#end()
-
-" Performance
-set ttyfast
-set lazyredraw
 
 " Messages, Info, Status
 set laststatus=2            " allways show status line
