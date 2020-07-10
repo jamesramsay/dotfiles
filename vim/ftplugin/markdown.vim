@@ -5,7 +5,6 @@ setlocal wrap
 
 call jamsay#functions#spell()
 
-PencilHard
 set textwidth=80
 
 " Fix funky frontmatter highlighting for Jekyll posts and the like
