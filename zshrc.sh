@@ -35,9 +35,6 @@ prompt pure
 # TODO: move back to shell driven color control rather than emulator
 export CLICOLOR=1 # enable file type colors
 
-# Syntax highlighting bundle.
-source $HOME/.zsh/bundles/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
 #
 # History
 #

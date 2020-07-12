@@ -3,47 +3,67 @@ ref = develop
 path = opt/git-subtrees
 url = https://gitlab.com/jramsay/git-subtrees.git
 
-[subtree "deoplete"]
+[subtree "nvim-completion"]
 ref = master
-path = vim/pack/bundle/opt/deoplete
-url = https://github.com/Shougo/deoplete.nvim.git
-
-[subtree "deoplete-lsp"]
-ref = master
-path = vim/pack/bundle/opt/deoplete-lsp
-url = https://github.com/Shougo/deoplete-lsp.git
-
-[subtree "ferret"]
-ref = master
-path = vim/pack/bundle/opt/ferret
-url = https://github.com/wincent/ferret.git
-
-[subtree "fzf"]
-ref = master
-path = vim/pack/bundle/opt/fzf.vim
-url = https://github.com/junegunn/fzf.vim.git
+path = vim/pack/bundle/opt/nvim-completion
+url = https://github.com/nvim-lua/completion-nvim.git
 
 [subtree "nvim-lsp"]
 ref = master
 path = vim/pack/bundle/opt/nvim-lsp
 url = https://github.com/neovim/nvim-lsp.git
 
-[subtree "pinnacle"]
+[subtree "nvim-neomake"]
+ref = master
+path = vim/pack/bundle/opt/vim-neomake
+url = https://github.com/neomake/neomake.git
+
+[subtree "tmux-continuum"]
+ref = v3.1.0
+path = tmux/plugins/tmux-continuum
+url = https://github.com/tmux-plugins/tmux-continuum.git
+
+[subtree "tmux-resurrect"]
+ref = v2.4.0
+path = tmux/plugins/tmux-resurrect
+url = https://github.com/tmux-plugins/tmux-resurrect.git
+
+[subtree "vim-deoplete"]
+ref = master
+path = vim/pack/bundle/opt/deoplete
+url = https://github.com/Shougo/deoplete.nvim.git
+
+[subtree "vim-deoplete-lsp"]
+ref = master
+path = vim/pack/bundle/opt/deoplete-lsp
+url = https://github.com/Shougo/deoplete-lsp.git
+
+[subtree "vim-ferret"]
+ref = master
+path = vim/pack/bundle/opt/ferret
+url = https://github.com/wincent/ferret.git
+
+[subtree "vim-fzf"]
+ref = master
+path = vim/pack/bundle/opt/fzf.vim
+url = https://github.com/junegunn/fzf.vim.git
+
+[subtree "vim-pinnacle"]
 ref = master
 path = vim/pack/bundle/opt/pinnacle
 url = https://github.com/wincent/pinnacle.git
 
-[subtree "supertab"]
+[subtree "vim-supertab"]
 ref = master
 path = vim/pack/bundle/opt/supertab
 url = https://github.com/ervandew/supertab.git
 
-[subtree "terminus"]
+[subtree "vim-terminus"]
 ref = master
 path = vim/pack/bundle/opt/terminus
 url = https://github.com/wincent/terminus.git
 
-[subtree "vimiwiki"]
+[subtree "vimi-wiki"]
 ref = master
 path = vim/pack/bundle/opt/vimwiki
 url = https://github.com/vimwiki/vimwiki.git
@@ -100,7 +120,7 @@ url = https://github.com/elzr/vim-json.git
 
 [subtree "vim-markdown"]
 ref = master
-path = vim/pack/bunlde/opt/vim-markdown
+path = vim/pack/bundle/opt/vim-markdown
 url = https://github.com/plasticboy/vim-markdown.git
 
 [subtree "vim-one"]
@@ -132,3 +152,23 @@ url = https://github.com/christoomey/vim-tmux-navigator.git
 ref = master
 path = vim/pack/bundle/opt/vim-yaml
 url = https://github.com/mrk21/yaml-vim.git
+
+[subtree "zsh-pure"]
+ref = v1.12.0
+path = zsh/bundles/pure
+url = https://github.com/sindresorhus/pure.git
+
+[subtree "zsh-async"]
+ref = v1.8.3
+path = zsh/bundles/async
+url = https://github.com/mafredri/zsh-async
+
+[subtree "zsh-completions"]
+ref = 0.31.0
+path = zsh/bundles/zsh-completions
+url = https://github.com/zsh-users/zsh-completions.git
+
+[subtree "zsh-autosuggestions"]
+ref = v0.6.4
+path = zsh/bundles/zsh-autosuggestions
+url = https://github.com/zsh-users/zsh-autosuggestions.git
