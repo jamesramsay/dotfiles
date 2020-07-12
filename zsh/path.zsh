@@ -3,9 +3,6 @@ unset PATH
 
 PATH=$HOME/.opt/bin
 
-# Zsh scripts and utils
-PATH=$PATH:$HOME/.zsh/bin
-
 # Common system paths
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
