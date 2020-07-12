@@ -1,0 +1,81 @@
+#!/usr/bin/env python
+
+# git-subtree wrapper for working with many subtrees
+# Copyright James Ramsay, 2020
+
+import sys
+import os
+import re
+import argparse
+import subprocess
+import ConfigParser
+
+parser = argparse.ArgumentParser(description="git-subtree wrapper for working with many subtrees")
+
+parser.add_argument("subtree", nargs="?", help="Path or name of subtree to update")
+parser.add_argument("--all", action="store_true", help="All subtrees")
+parser.add_argument("--add", action="store_true", help="Create new subtree if it does not exist")
+parser.add_argument("--pull", action="store_true", help="Pull and merge changes into the subtree")
+parser.add_argument("--squash", action="store_true", help="See git-subtree documentation")
+parser.add_argument("--config", "-c", type=str, help="Path to config")
+parser.add_argument("--dry-run", action="store_true")
+parser.add_argument("--debug", "-d", action="store_true", help="Produce even more unnecessary output messages on stderr.")
+
+args = parser.parse_args()
+
+debug = "-d" if args.debug else ""
+squash = "--squash" if args.squash else ""
+
+if not args.subtree and not args.all:
+    print "subtree or --all must be specified\n"
+    parser.print_help()
+    sys.exit(1)
+
+config_path = args.config
+if not config_path:
+    try:
+        git_dir = subprocess.check_output(["git", "rev-parse", "--show-toplevel"]).split('\n')[0]
+        config_path = "%s/.gittrees" % git_dir
+    except subprocess.CalledProcessError as e:
+        print e.output
+        sys.exit(1)
+
+print "Using config %s" % config_path
+config = ConfigParser.RawConfigParser()
+config.read(config_path)
+
+def call(x):
+    call_args = list(filter(None, x))
+    if args.debug:
+        print call_args
+
+    if args.dry_run:
+        separator = ' '
+        print separator.join(call_args)
+        return
+
+    return subprocess.call(call_args)
+
+def main():
+    for section in config.sections():
+        m = re.search('^subtree\s+\"(.+)\"\s*$',section)
+        name = None
+        if not m:
+            continue
+        name = m.group(1)
+        url = config.get(section, "url")
+        path = config.get(section, "path")
+        ref = config.get(section, "ref")
+
+        if not (args.all or args.subtree in [name, path]):
+            continue
+
+        pathExists = path in subprocess.check_output(["git", "ls-tree", "HEAD", path]).split('\n')[0]
+
+        if pathExists and args.pull:
+            call(["git", "subtree", "pull", "--prefix", path, url, ref, squash, debug])
+
+        if not pathExists and args.add:
+            call(["git", "subtree", "add", "--prefix", path, url, ref, squash, debug])
+
+main()
