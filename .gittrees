@@ -163,12 +163,17 @@ ref = v1.8.3
 path = zsh/bundles/async
 url = https://github.com/mafredri/zsh-async
 
+[subtree "zsh-autosuggestions"]
+ref = v0.6.4
+path = zsh/bundles/zsh-autosuggestions
+url = https://github.com/zsh-users/zsh-autosuggestions.git
+
 [subtree "zsh-completions"]
 ref = 0.31.0
 path = zsh/bundles/zsh-completions
 url = https://github.com/zsh-users/zsh-completions.git
 
-[subtree "zsh-autosuggestions"]
-ref = v0.6.4
-path = zsh/bundles/zsh-autosuggestions
-url = https://github.com/zsh-users/zsh-autosuggestions.git
+[subtree "zsh-fast-syntax-highlighting"]
+ref = v1.55
+path = zsh/bundles/zsh-fast-syntax-highlighting
+url = https://github.com/zdharma/fast-syntax-highlighting.git
