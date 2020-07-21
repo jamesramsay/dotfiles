@@ -27,7 +27,7 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/Library/Python/3.6/bin
 
 # Postgres (GitLab GDK)
-PATH=$PATH:/usr/local/opt/postgresql@10/bin
+PATH=$PATH:/usr/local/opt/postgresql@11/bin
 
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/icu4c/lib/pkgconfig
 
