@@ -11,13 +11,15 @@ set rtp+=/usr/local/opt/fzf
 
 if &loadplugins
   if has('packages')
-    packadd! deoplete  " Autocomplete
-    packadd! deoplete-lsp " Deoplete LSP integration
+    " packadd! deoplete  " Autocomplete
+    " packadd! deoplete-lsp " Deoplete LSP integration
     packadd! ferret " Improved multi-file search
     packadd! fzf.vim
 
     if has('nvim')
-      packadd! nvim-lsp " Configurations for common language servers
+      packadd! nvim-lsp           " Configurations for common language servers
+      packadd! nvim-completion    " Lua language server powered completions
+      packadd! nvim-neomake            " Async linting
     end
 
     packadd! pinnacle             " Manipulate highlight groups for italics

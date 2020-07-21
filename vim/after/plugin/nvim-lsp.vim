@@ -5,6 +5,10 @@ endif
 :lua << END
   require'nvim_lsp'.gopls.setup{}
   require'nvim_lsp'.jsonls.setup{}
+  require'nvim_lsp'.pyls.setup{
+    on_attach = require'completion'.on_attach
+  }
+  require'nvim_lsp'.solargraph.setup{}
   require'nvim_lsp'.vimls.setup{}
   require'nvim_lsp'.yamlls.setup{
     settings = {
