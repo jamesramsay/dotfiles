@@ -67,6 +67,7 @@
 	untracked = blue
 
 [core]
+	ignorecase = false
 	# Added in Git 2.18.0
 	commitGraph = true
 	excludesfile = ~/.gitignore
@@ -136,7 +137,7 @@
 
 [trace2]
 	# Added in Git 2.22, allows analysis of performance trends
-	eventTarget = /Users/jramsay/.git_events.log
+	#eventTarget = /Users/jramsay/.git_events.log
 
 [user]
 	email = james@jramsay.com.au
@@ -156,3 +157,5 @@
 
 [url "ssh://git@gitlab.com/"]
 	insteadOf = https://gitlab.com/
+[fetch]
+	writeCommitGraph = true
