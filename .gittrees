@@ -15,7 +15,7 @@ url = https://github.com/neovim/nvim-lsp.git
 
 [subtree "nvim-neomake"]
 ref = master
-path = vim/pack/bundle/opt/vim-neomake
+path = vim/pack/bundle/opt/nvim-neomake
 url = https://github.com/neomake/neomake.git
 
 [subtree "tmux-continuum"]
