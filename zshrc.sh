@@ -66,6 +66,8 @@ setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # don't push multiple copies of same dir onto stack
 setopt pushdsilent          # don't print dir stack after pushing/popping
 
+DISABLE_AUTO_TITLE="true"
+
 #
 # Completions
 #
