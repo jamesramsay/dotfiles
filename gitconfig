@@ -90,11 +90,18 @@
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
+[fetch]
+	writeCommitGraph = true
+
 [gpg]
 	program = gpg
 
 [interactive]
 	diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+
+[init]
+	# Added in Git 2.28.0
+	defaultBranch = main
 
 [log]
 	decorate = short
@@ -156,6 +163,4 @@
 	insteadOf = https://github.com/
 
 [url "ssh://git@gitlab.com/"]
-	insteadOf = https://gitlab.com/
-[fetch]
-	writeCommitGraph = true
+  insteadOf = https://gitlab.com/
