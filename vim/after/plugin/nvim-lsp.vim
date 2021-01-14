@@ -14,7 +14,8 @@ endif
     settings = {
       yaml = {
         schemas = {
-          ["data/schemas/releasepost.schema.json"] = "data/release_posts/*/*.yml"
+          ["data/schemas/releasepost.schema.json"] = "data/release_posts/*/*.yml",
+          ["data/schemas/features.schema.json"] = "data/features.yml"
         }
       }
     }
