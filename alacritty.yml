@@ -64,16 +64,16 @@ dpi:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Operator Mono for Powerline
-    style: Book
+    family: Input Mono
+    style: Regular
 
   bold:
-    family: Operator Mono for Powerline
+    family: Input Mono
     style: Medium
 
   italic:
-    family: Operator Mono for Powerline
-    style: Book Italic
+    family: Input Mono
+    style: Regular Italic
 
   # Point size of the font
   size: 16.0
@@ -82,7 +82,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 1
 
   # Thin stroke font rendering (macOS only)
   #
@@ -92,9 +92,7 @@ font:
   # macOS >= 10.14.x:
   #
   # If the font quality on non-retina display looks bad then set
-  # `use_thin_strokes` to `true` and enable font smoothing by running the
-  # following command:
-  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+  # `use_thin_strokes` to `true` and enable font smoothing by running the following command: `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
@@ -151,7 +149,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -270,7 +268,7 @@ live_config_reload: true
 #   - (Linux/macOS) /bin/bash --login
 #   - (Windows) powershell
 shell:
-  program: /usr/local/bin/zsh
+  program: /bin/zsh
   args:
     - --login
     - -c
