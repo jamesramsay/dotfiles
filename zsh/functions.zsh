@@ -74,12 +74,3 @@ _fzf_complete_git() {
 _fzf_complete_git_post() {
   awk '{print $1}'
 }
-
-# FZF - fasd integration
-j() {
-  if [[ -z "$*" ]]; then
-    cd "$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)"
-  else
-    fasd_cd -d "$@"
-  fi
-}

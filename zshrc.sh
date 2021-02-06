@@ -105,19 +105,3 @@ if _has fzf && _has rg; then
   export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" 2> /dev/null'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
-
-#
-# fasd
-#
-if _has fasd; then
-  eval "$(fasd --init auto)"
-fi
-
-#
-# Ruby
-#
-CHRUBY=/usr/local/opt/chruby/share/chruby
-if [ -d "$CHRUBY" ]; then
-  test -e "$CHRUBY/chruby.sh" && source "$CHRUBY/chruby.sh"
-  test -e "$CHRUBY/auto.sh" && source "$CHRUBY/auto.sh"
-fi
