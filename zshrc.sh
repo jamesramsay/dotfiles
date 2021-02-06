@@ -73,10 +73,7 @@ DISABLE_AUTO_TITLE="true"
 #
 
 source $HOME/.zsh/bundles/zsh-autosuggestions/zsh-autosuggestions.zsh
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
-fi
+
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
 
@@ -94,6 +91,16 @@ source $HOME/.zsh/path.zsh
 #
 # FZF
 #
+
+if _has brew; then
+  BREWPREFIX=$(brew --prefix)
+fi
+
+if [ -e $BREWPREFIX/opt/fzf/shell/completion.zsh ]; then
+  source $BREWPREFIX/opt/fzf/shell/key-bindings.zsh
+  source $BREWPREFIX/opt/fzf/shell/completion.zsh
+fi
+
 if _has fzf && _has rg; then
   export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" 2> /dev/null'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
