@@ -13,10 +13,10 @@ ref = master
 path = vim/pack/bundle/opt/nvim-compe
 url = https://github.com/hrsh7th/nvim-compe.git
 
-[subtree "nvim-lsp"]
+[subtree "nvim-lspconfig"]
 ref = master
-path = vim/pack/bundle/opt/nvim-lsp
-url = https://github.com/neovim/nvim-lsp.git
+path = vim/pack/bundle/opt/nvim-lspconfig
+url = https://github.com/neovim/nvim-lspconfig.git
 
 [subtree "nvim-neomake"]
 ref = master

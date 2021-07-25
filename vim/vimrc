@@ -17,9 +17,9 @@ if &loadplugins
     packadd! fzf.vim
 
     if has('nvim')
-      packadd! nvim-lsp           " Configurations for common language servers
-      packadd! nvim-completion    " Lua language server powered completions
-      packadd! nvim-neomake            " Async linting
+      packadd! nvim-compe         " Lua language server powered completions
+      packadd! nvim-lspconfig     " Configurations for common language servers
+      packadd! nvim-neomake       " Async linting
     end
 
     packadd! pinnacle             " Manipulate highlight groups for italics

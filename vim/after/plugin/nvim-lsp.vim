@@ -3,14 +3,14 @@ if !has('nvim')
 endif
 
 :lua << END
-  require'nvim_lsp'.gopls.setup{}
-  require'nvim_lsp'.jsonls.setup{}
-  require'nvim_lsp'.pyls.setup{
+  require'lspconfig'.gopls.setup{}
+  require'lspconfig'.jsonls.setup{}
+  require'lspconfig'.pyls.setup{
     on_attach = require'completion'.on_attach
   }
-  require'nvim_lsp'.solargraph.setup{}
-  require'nvim_lsp'.vimls.setup{}
-  require'nvim_lsp'.yamlls.setup{
+  require'lspconfig'.solargraph.setup{}
+  require'lspconfig'.vimls.setup{}
+  require'lspconfig'.yamlls.setup{
     settings = {
       yaml = {
         schemas = {
