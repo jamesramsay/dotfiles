@@ -8,10 +8,10 @@ ref = develop
 path = opt/scrunch
 url = https://github.com/jamesramsay/scrunch.git
 
-[subtree "nvim-completion"]
+[subtree "nvim-compe"]
 ref = master
-path = vim/pack/bundle/opt/nvim-completion
-url = https://github.com/nvim-lua/completion-nvim.git
+path = vim/pack/bundle/opt/nvim-compe
+url = https://github.com/hrsh7th/nvim-compe.git
 
 [subtree "nvim-lsp"]
 ref = master
