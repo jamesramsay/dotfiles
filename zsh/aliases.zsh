@@ -1,6 +1,7 @@
 #
 # Command aliases
 #
+alias python=/usr/local/bin/python3
 
 # When I think I'm in vim
 alias :q=exit
