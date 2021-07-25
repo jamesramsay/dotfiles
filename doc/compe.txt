@@ -1,0 +1,510 @@
+*compe.txt*                             Auto completion plugin for nvim.
+
+==============================================================================
+CONTENTS                                                    *nvim-compe* *compe*
+
+Concept                               |compe-concept|
+Features                              |compe-features|
+Prerequisites                         |compe-prerequisites|
+Quick Start                           |compe-quickstart|
+Functions                             |compe-functions|
+  Vimscript                           |compe-viml|
+  Lua                                 |compe-lua|
+Options                               |compe-options|
+Configuration                         |compe-config|
+  Highlight                           |compe-highlight|
+  Source Configuration                |compe-source|
+  Builtin Sources                     |compe-sources|
+  Example Configuration               |compe-example|
+Custom Source                         |compe-custom-source|
+
+
+==============================================================================
+CONCEPT                                                        *compe-concept*
+
+- Simple core
+- No flicker
+- Lua source & Vim source
+- Better matching algorithm
+- Support LSP completion features (trigger character, isIncomplete, expansion)
+- Respect VSCode/LSP API design
+
+
+==============================================================================
+FEATURES                                                      *compe-features*
+
+- VSCode compatible expansion handling
+  - rust-analyzer's `Magic Completion`
+  - vscode-html-languageserver-bin's closing tag completion
+  - Other complex expansion are supported
+- Flexible Custom Source API
+  - The source can support `documentation` / `resolve` / `confirm`
+- Better fuzzy matching algorithm
+  - `gu` can be matched `get_user`
+  - `fmodify` can be matched `fnamemodify`
+  - See `lua/compe/matcher.lua#L57` for implementation details if you're interested
+- Buffer source carefully crafted
+  - The buffer source will index buffer words by filetype specific regular
+    expression if needed
+
+
+==============================================================================
+PREREQUISITES                                            *compe-prerequisites*
+
+Make sure 'completeopt' is set to `menuone,noselect`:
+>
+  set completeopt=menuone,noselect
+<
+Using Lua:
+>
+  vim.o.completeopt = "menuone,noselect"
+<
+
+==============================================================================
+QUICK START                                                 *compe-quickstart*
+
+Simply define |g:compe| dictionary:
+>
+  let g:compe = {}
+  let g:compe.enabled = v:true
+  let g:compe.source = {
+    \ 'path': v:true,
+    \ 'buffer': v:true,
+    \ 'nvim_lsp': v:true,
+    \ }
+<
+...or, if you prefer Lua:
+>
+  require'compe'.setup({
+    enabled = true,
+    source = {
+      path = true,
+      buffer = true,
+      nvim_lsp = true,
+    },
+  })
+<
+For the list of builtin sources, see |compe-sources|.
+For the list of available options, see |compe-config|.
+
+Optionally, you can define mappings:
+>
+  inoremap <silent><expr> <C-Space> compe#complete()
+  inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+<
+If you use an autopair plugin, like cohama/lexima.vim:
+>
+  inoremap <silent><expr> <C-Space> compe#complete()
+  inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
+  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+<
+For Raimondi/delimitMate:
+>
+  inoremap <silent><expr> <C-Space> compe#complete()
+  inoremap <silent><expr> <CR>      compe#confirm({'keys': "\<Plug>delimitMateCR", 'mode': ''})
+  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+<
+Some sources might rely on |compe#confirm()| mapping. For example, to expand
+snippets from the completion menu, you have to use |compe#confirm()| mapping.
+
+
+==============================================================================
+FUNCTIONS                                                    *compe-functions*
+
+|nvim-compe| is under active development, breaking changes may occur.
+
+------------------------------------------------------------------------------
+VIMSCRIPT                                                         *compe-viml*
+
+compe#setup({config}[, {bufnr}])                               *compe#setup()*
+    Setup user configuration.
+
+    {config} is a dictionary. See |compe-config| for the list of available
+    options.
+
+    If {bufnr} is provided, sets up completion for buffer {bufnr}, or 0 for
+    current buffer. Missing options will be inherited from global config.
+>
+    " Global configuration
+    call compe#setup({ ... })
+
+    " Buffer configuration
+    autocmd FileType c,cpp call compe#setup({ ... }, 0)
+<
+compe#register_source({name}, {source})              *compe#register_source()*
+    Register source.
+    Returns source id.
+    See |compe-custom-source|.
+
+compe#unregister_source({id})                      *compe#unregister_source()*
+    Unregister source.
+>
+    let l:id = compe#register_source('name', s:source)
+    call compe#unregister_source(l:id)
+<
+compe#complete()                                            *compe#complete()*
+    Invoke completion.
+
+compe#confirm([{fallback}])                                  *compe#confirm()*
+    Confirm selected item.
+    {fallback} is optional fallback key.
+>
+    call compe#confirm('<C-y>')
+<
+compe#close([{fallback}])                                      *compe#close()*
+    Close completion menu.
+    {fallback} is optional fallback key.
+>
+    call compe#close('<C-e>')
+<
+compe#helper#*()                                                *compe#helper*
+    Source helpers.
+
+
+------------------------------------------------------------------------------
+LUA                                                                *compe-lua*
+
+compe.setup({config}[, {bufnr}])                               *compe.setup()*
+    Setup user configuration.
+    See |compe#setup()| and |compe-config|.
+>
+    -- Global configuration
+    require'compe'.setup({ ... })
+
+    -- Buffer configuration
+    local on_attach = function()
+      require'compe'.setup({ ... }, 0)
+    end
+<
+compe.register_source({name}, {source})              *compe.register_source()*
+    See |compe#register_source()|.
+
+compe.unregister_source({id})                      *compe.unregister_source()*
+    See |compe#unregister_source()|.
+>
+    local id = require'compe'.register_source(name, source)
+    require'compe'.unregister_source(id)
+<
+compe.helper.*                                                  *compe.helper*
+    Source helpers.
+
+
+==============================================================================
+OPTIONS                                                        *compe-options*
+
+g:compe                                                              *g:compe*
+    Global configuration.
+    A dictionary, see |compe-config| for the list of available options.
+>
+    let g:compe = {}
+    let g:compe.enabled = v:true
+    let g:compe.source = {
+      \ 'path': v:true,
+      \ 'buffer': v:true,
+      \ 'nvim_lsp': v:true,
+      \ }
+<
+
+==============================================================================
+CONFIGURATION                                                   *compe-config*
+
+Configuration is defined as dictionary, that can be passed to |compe#setup()|
+and |compe.setup()| functions, or defined as |g:compe| variable.
+The `source` option is required, but others may be omitted.
+
+enabled ~
+    Enable completion.
+      Type: |Boolean|
+      Default: true
+
+autocomplete ~
+    Open the popup menu automatically.
+      Type: |Boolean|
+      Default: true
+
+debug ~
+    Display debug info.
+      Type: |Boolean|
+      Default: false
+
+min_length ~
+    Minimal characters length to trigger completion.
+      Type: |Number|
+      Default: 1
+
+default_pattern ~
+    Specify default_pattern that uses by `compe_buffer` source and `compe.helper.determine` helper (experimental).
+      Type: |String|
+      Default: `\h\w*\%(-\w*\)*`
+
+preselect ~
+    Preselect behaviour.
+      Type: |String|
+      Accepted values:
+        "enable"      Preselect completion item only if the source told
+                      nvim-compe to do so. Eg. completion from gopls.
+        "disable"     Never preselect completion item regardless of source
+        "always"      Always preselect completion item regardless of source
+      Default: "enable"
+
+throttle_time ~
+    Throttle completion menu.
+      Type: |Number|
+      Default: 80
+
+source_timeout ~
+    Timeout for nvim-compe to get completion items.
+      Type: |Number|
+      Default: 200
+
+resolve_timeout~
+    Timeout for completionItem/resolve on confirmation.
+      Type: |Number|
+      Default: 800
+
+incomplete_delay ~
+    Delay for LSP's isIncomplete.
+      Type: |Number|
+      Default: 400
+
+max_abbr_width ~
+    Width for truncate too long abbr. If you specify 0, it will be removed.
+    Type: |Number|
+    Default: 100
+
+max_kind_width ~
+    Width for truncate too long kind. If you specify 0, it will be removed.
+    Type: |Number|
+    Default: 100
+
+max_menu_width ~
+    Width for truncate too long menu. If you specify 0, it will be removed.
+    Type: |Number|
+    Default: 100
+
+documentation ~
+    Documentation behaviour.
+      Type: |Boolean|
+      Default: true
+
+source ~
+    Source configuration. Required.
+      Type: |Dictionary| of:
+        Key: |String|
+          Source name.
+          For the list of builtin sources, see |compe-sources|.
+        Value: |Boolean| | |Dictionary|
+          Source configuration.
+          If true, the source is enabled with default options.
+          If false, the source is disabled.
+          For dictionary, see |compe-source| for the list of source options.
+
+
+------------------------------------------------------------------------------
+HIGHLIGHT                                                    *compe-highlight*
+
+You can change documentation window's highlight group via following.
+>
+    highlight link CompeDocumentation NormalFloat
+<
+
+
+------------------------------------------------------------------------------
+SOURCE CONFIGURATION                                            *compe-source*
+
+Source configuration is defined as dictionary with items:
+
+priority ~
+    Specify source priority.
+      Type: |Number|
+
+filetypes ~
+    List of enabled filetypes for this source.
+      Type: |List|
+
+ignored_filetypes ~
+    List of ignored filetypes for this source.
+      Type: |List|
+
+sort ~
+    Specify source is sortable or not.
+      Type: |Boolean|
+
+dup ~
+    Specify source candidates can have the same word another item.
+      Type: |Boolean|
+
+kind ~
+    Specify item's kind (see |complete-items|)
+      Type: |String|
+
+menu ~
+    Specify item's menu (see |complete-items|)
+      Type: |String|
+
+
+------------------------------------------------------------------------------
+BUILTIN SOURCES                                                *compe-sources*
+
+Common: ~
+path                Path completion.
+buffer              Buffer completion.
+tags                Tag completion.
+spell               Spell file completion.
+calc                Lua math expressions.
+omni                Omni completion. (Warning: It has a lot of side-effect.)
+emoji               Emoji completion.
+
+Neovim-specific: ~
+nvim_lsp            Neovim's builtin LSP completion.
+nvim_lua            Neovim's Lua "stdlib" completion.
+
+External plugins: ~
+Completion for external plugins.
+Make sure you have the corresponding plugin installed.
+
+vim_lsp             vim-lsp completion.
+vim_lsc             vim-lsc completion.
+vsnip               vim-vsnip completion.
+ultisnips           UltiSnips completion.
+luasnip             LuaSnip completion.
+snippets_nvim       snippets.nvim completion.
+treesitter          nvim-treesitter completion. (Warning: it sometimes really slow.)
+
+
+------------------------------------------------------------------------------
+EXAMPLE CONFIGURATION                                          *compe-example*
+
+Both Vimscript and Lua examples are using default values.
+
+Vimscript:
+>
+  let g:compe = {}
+  let g:compe.enabled = v:true
+  let g:compe.autocomplete = v:true
+  let g:compe.debug = v:false
+  let g:compe.min_length = 1
+  let g:compe.preselect = 'enable'
+  let g:compe.throttle_time = 80
+  let g:compe.source_timeout = 200
+  let g:compe.resolve_timeout = 800
+  let g:compe.incomplete_delay = 400
+  let g:compe.max_abbr_width = 100
+  let g:compe.max_kind_width = 100
+  let g:compe.max_menu_width = 100
+  let g:compe.documentation = v:true
+
+  let g:compe.source = {}
+  let g:compe.source.path = v:true
+  let g:compe.source.buffer = v:true
+  let g:compe.source.calc = v:true
+  let g:compe.source.nvim_lsp = v:true
+  let g:compe.source.nvim_lua = v:true
+  let g:compe.source.vsnip = v:true
+  let g:compe.source.ultisnips = v:true
+  let g:compe.source.luasnip = v:true
+  let g:compe.source.emoji = v:true
+<
+Lua:
+>
+  require'compe'.setup {
+    enabled = true;
+    autocomplete = true;
+    debug = false;
+    min_length = 1;
+    preselect = 'enable';
+    throttle_time = 80;
+    source_timeout = 200;
+    resolve_timeout = 800;
+    incomplete_delay = 400;
+    max_abbr_width = 100;
+    max_kind_width = 100;
+    max_menu_width = 100;
+    documentation = true;
+
+    source = {
+      path = true;
+      buffer = true;
+      calc = true;
+      nvim_lsp = true;
+      nvim_lua = true;
+      vsnip = true;
+      ultisnips = true;
+      luasnip = true;
+      emoji = true;
+    };
+  }
+<
+
+==============================================================================
+CUSTOM SOURCE                                            *compe-custom-source*
+
+Source is defined as dictionary with items:
+
+get_metadata ~
+    This function should return the default source configuration.
+    See |compe-source| section.
+
+determine ~
+    This function should return dict as:
+>
+    { keyword_pattern_offset   = 1-origin number;
+      trigger_character_offset = 1-origin number; }
+<
+    If this function returns empty, nvim-compe will do nothing.
+
+complete ~
+    This function should callback the completed items as:
+>
+    args.callback({ items = items })
+<
+    To stop the competion process, call `args.abort()`.
+
+    The item is almost the same as vim's complete-items (see |complete-items|)
+    But compe will accept specific properties below.
+
+    preselect ~
+      If this property will be true, the item will be pre-select.
+
+    filter_text ~
+      The matching will be used this text.
+
+    sort_text ~
+      The matching will be used this text.
+
+documentation ~
+    Optional.
+    You can provide documentation for selected items.
+    See nvim_lsp or snippets.nvim source for examples.
+    NOTE: This method will be deprecated.
+
+resolve ~
+    Optional.
+    The `resolve` method can be used to resolve the current selected item.
+    It will useful to you callback all items as quickly and provide
+    documentation for them later.
+
+confirm ~
+    Optional.
+    A function that gets executed when you confirm a completion item.
+    Useful for snippets that needs to be expanded.
+    See the vsnip, snippets.nvim or luasnip sources for examples.
+
+
+You can see example on https://github.com/kristijanhusak/vim-dadbod-completion
+
+- implementation
+  https://github.com/kristijanhusak/vim-dadbod-completion/blob/master/autoload/vim_dadbod_completion/compe.vim
+- registration
+  https://github.com/kristijanhusak/vim-dadbod-completion/blob/master/after/plugin/vim_dadbod_completion.vim#L4
+
+
+==============================================================================
+vim:tw=78:ts=4:et:ft=help:norl:
