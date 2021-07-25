@@ -3,6 +3,11 @@ ref = develop
 path = opt/git-subtrees
 url = https://gitlab.com/jramsay/git-subtrees.git
 
+[subtree "scrunch"]
+ref = develop
+path = opt/scrunch
+url = https://github.com/jamesramsay/scrunch.git
+
 [subtree "nvim-completion"]
 ref = master
 path = vim/pack/bundle/opt/nvim-completion
