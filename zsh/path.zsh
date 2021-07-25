@@ -3,6 +3,12 @@ unset PATH
 
 PATH=$HOME/.opt/bin
 
+# Ruby
+PATH=$PATH:/opt/homebrew/opt/ruby@2.7/bin
+LDFLAGS=-L/opt/homebrew/opt/ruby@2.7/lib
+CPPFLAGS=-I/opt/homebrew/opt/ruby@2.7/include
+PKG_CONFIG_PATH=/opt/homebrew/opt/ruby@2.7/lib/pkgconfig
+
 # Common system paths
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
