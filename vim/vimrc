@@ -7,12 +7,12 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 " fzf setup
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 
 if &loadplugins
   if has('packages')
-    " packadd! deoplete  " Autocomplete
-    " packadd! deoplete-lsp " Deoplete LSP integration
+    packadd! deoplete  " Autocomplete
+    packadd! deoplete-lsp " Deoplete LSP integration
     packadd! ferret " Improved multi-file search
     packadd! fzf.vim
 
