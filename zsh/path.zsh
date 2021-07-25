@@ -30,6 +30,8 @@ PATH=$PATH:$HOME/Library/Python/3.6/bin
 PATH=$PATH:/usr/local/opt/postgresql@11/bin
 
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/icu4c/lib/pkgconfig
+# Node - Fast Node Manager
+eval "$(fnm env)"
 
 export PATH
 export GOPATH
