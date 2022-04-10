@@ -116,8 +116,40 @@ module.exports = {
         };
       },
     },
+    {
+      // Bypass AWS Simple Email Service tracking redirect
+      match: finicky.matchHostnames(andSubdomains("awstrack.me")),
+      url({ url, urlString }) {
+        const outputStr = decodeURIComponent(
+          url.pathname
+            .split("/")
+            .find((part) => part.startsWith("http"))
+          )
+        finicky.log(`Rewrote AWS tracking redirect ${urlString} to deep link ${outputStr}`)
+        return outputStr
+      },
+    },
+    {
+      // Bypass Google tracking redirect
+      match: "www.google.com/url?*",
+      url({ url, urlString }) {
+        const outputStr = decodeURIComponent(
+          url.search
+            .split("&")
+            .map((parameter) => parameter.split("="))
+            .find(([key]) => key === "q")
+            .pop()
+        )
+        finicky.log(`Rewrote Google tracking redirect ${urlString} to deep link ${outputStr}`)
+        return outputStr
+      },
+    },
   ],
   handlers: [
+    {
+      match: () => finicky.getKeys().option,
+      browser: "Browserosaurus"
+    },
     {
       // Open Slack links in Slack
       match: ({ url }) => url.protocol === "slack",
@@ -140,21 +172,23 @@ module.exports = {
     },
     {
       // Open links from Cron calendar app in Chrome
-      match: ({ opener }) => opener.path.includes("Cron.app"),
+      match: ({ opener }) => opener.path?.includes("Cron.app"),
       browser: "Google Chrome"
     },
     {
       // Open work related links in Chrome
       match: finicky.matchHostnames(andSubdomains([
-          "remote.com",
-          "niceremote.com",
-          "gitlab.com",
-          "asana.com",
-          "google.com",
-          "loom.com",
-          "notion.so",
-          "okta.com",
-          "pitch.com",
+        "remote.com",
+        "niceremote.com",
+        "gitlab.com",
+        "asana.com",
+        "google.com",
+        "loom.com",
+        "miro.com",
+        "notion.so",
+        "okta.com",
+        "pitch.com",
+        "zoom.us",
       ])),
       browser: "Google Chrome"
     },
