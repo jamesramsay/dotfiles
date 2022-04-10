@@ -133,6 +133,11 @@ ref = master
 path = vim/pack/bundle/opt/vim-one
 url = https://github.com/rakr/vim-one.git
 
+[subtree "vim-tokyonight"]
+ref = master
+path = vim/pack/bundle/opt/vim-tokyonight
+url = https://github.com/folke/tokyonight.nvim
+
 [subtree "vim-signify"]
 ref = master
 path = vim/pack/bundle/opt/vim-signify
