@@ -70,15 +70,15 @@ dpi:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Input Mono
+    family: JetBrains Mono
     style: Regular
 
   bold:
-    family: Input Mono
+    family: JetBrains Mono
     style: Medium
 
   italic:
-    family: Input Mono
+    family: JetBrains Mono
     style: Regular Italic
 
   # Point size of the font
@@ -88,7 +88,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 1
+    y: 0
 
   # Thin stroke font rendering (macOS only)
   #
@@ -107,31 +107,63 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (One Half Light)
+# TokyoNight Alacritty Colors
 colors:
+  # Default colors
   primary:
-    background: '0xfafafa'
-    foreground: '0x383a42'
+    background: '0xe1e2e7'
+    foreground: '0x3760bf'
 
+  # Normal colors
   normal:
-    black: '0x383a42'
-    red: '0xe45649'
-    green: '0x50a14f'
-    yellow: '0xc18401'
-    blue: '0x0184bc'
-    magenta: '0xa626a4'
-    cyan: '0x0997b3'
-    white: '0xfafafa'
+    black:   '0xe9e9ed'
+    red:     '0xf52a65'
+    green:   '0x587539'
+    yellow:  '0x8c6c3e'
+    blue:    '0x2e7de9'
+    magenta: '0x9854f1'
+    cyan:    '0x007197'
+    white:   '0x6172b0'
 
+  # Bright colors
   bright:
-    black: '0x383a42'
-    red: '0xe45649'
-    green: '0x50a14f'
-    yellow: '0xc18401'
-    blue: '0x0184bc'
-    magenta: '0xa626a4'
-    cyan: '0x0997b3'
-    white: '0xfafafa'
+    black:   '0xa1a6c5'
+    red:     '0xf52a65'
+    green:   '0x587539'
+    yellow:  '0x8c6c3e'
+    blue:    '0x2e7de9'
+    magenta: '0x9854f1'
+    cyan:    '0x007197'
+    white:   '0x3760bf'
+
+  indexed_colors:
+    - { index: 16, color: '0xb15c00' }
+    - { index: 17, color: '0xc64343' }
+# Colors (One Half Light)
+# colors:
+#   primary:
+#     background: '0xfafafa'
+#     foreground: '0x383a42'
+# 
+#   normal:
+#     black: '0x383a42'
+#     red: '0xe45649'
+#     green: '0x50a14f'
+#     yellow: '0xc18401'
+#     blue: '0x0184bc'
+#     magenta: '0xa626a4'
+#     cyan: '0x0997b3'
+#     white: '0xfafafa'
+# 
+#   bright:
+#     black: '0xa0a1a8'
+#     red: '0xe45649'
+#     green: '0x50a14f'
+#     yellow: '0xc18401'
+#     blue: '0x0184bc'
+#     magenta: '0xa626a4'
+#     cyan: '0x0997b3'
+#     white: '0xfafafa'
 
 
 # Visual Bell
