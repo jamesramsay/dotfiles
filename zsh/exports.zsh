@@ -30,7 +30,7 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;111m'
 
-# colour ls listings
+# Colour ls listings
 export CLICOLOR=true
 
 export GPG_TTY=$(tty)

@@ -3,11 +3,6 @@
 #
 alias python=/usr/local/bin/python3
 
-# When I think I'm in vim
-alias :q=exit
-alias :wq=exit
-
-
 if command -v exa &> /dev/null; then
   alias l='exa -F'
   alias ll='exa --long -F'
@@ -15,9 +10,7 @@ else
   alias l='ls -F'
   alias ll='ls -laF'
 fi
-alias g='git'
-alias p='git patch'
-alias o='git oneline -10'
+
 if command -v nvim &> /dev/null; then
   alias vim=nvim # Use `\vim` or `command vim` to get the real vim.
 fi

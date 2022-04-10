@@ -5,15 +5,18 @@
 #
 # 2017-06-20: 120ms (2015 MacBook Air)
 
+autoload -U compinit
+compinit -u
+
 #
 # Completions
 #
 
-fpath=($HOME/.zsh/bundles/zsh-completions/src $fpath)
 fpath=($HOME/.zsh/completions $fpath)
+fpath=($HOME/.zsh/bundles/zsh-completions/src $fpath)
 
-autoload -U compinit
-compinit -u
+source $HOME/.zsh/bundles/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 # Make completion:
 # - Case-insensitive.
@@ -69,15 +72,6 @@ setopt pushdsilent          # don't print dir stack after pushing/popping
 DISABLE_AUTO_TITLE="true"
 
 #
-# Completions
-#
-
-source $HOME/.zsh/bundles/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
-
-#
 # Other
 #
 
@@ -90,6 +84,8 @@ source $HOME/.zsh/path.zsh
 
 #
 # FZF
+#   C-r  History
+#   C-t  Files
 #
 
 if _has brew; then

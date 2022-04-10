@@ -5,10 +5,6 @@ endif
 :lua << END
   require'lspconfig'.gopls.setup{}
   require'lspconfig'.jsonls.setup{}
-  require'lspconfig'.pyls.setup{
-    on_attach = require'completion'.on_attach
-  }
-  require'lspconfig'.solargraph.setup{}
   require'lspconfig'.vimls.setup{}
   require'lspconfig'.yamlls.setup{
     settings = {
@@ -20,24 +16,6 @@ endif
       }
     }
   }
-
-  -- Override hover winhighlight.
-  local method = 'textDocument/hover'
-  local hover = vim.lsp.callbacks[method]
-  vim.lsp.callbacks[method] = function (_, method, result)
-     hover(_, method, result)
-
-     for _, winnr in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-       if pcall(function ()
-         vim.api.nvim_win_get_var(winnr, 'textDocument/hover')
-       end) then
-         vim.api.nvim_win_set_option(winnr, 'winhighlight', 'Normal:Visual,NormalNC:Visual')
-         break
-       else
-         -- Not a hover window.
-       end
-     end
-  end
 END
 
 function! s:Bind()

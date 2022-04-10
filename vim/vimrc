@@ -11,13 +11,11 @@ set rtp+=/opt/homebrew/opt/fzf
 
 if &loadplugins
   if has('packages')
-    packadd! deoplete  " Autocomplete
-    packadd! deoplete-lsp " Deoplete LSP integration
     packadd! ferret " Improved multi-file search
     packadd! fzf.vim
 
     if has('nvim')
-      packadd! nvim-compe         " Lua language server powered completions
+      packadd! nvim-compe
       packadd! nvim-lspconfig     " Configurations for common language servers
       packadd! nvim-neomake       " Async linting
     end
@@ -26,7 +24,7 @@ if &loadplugins
     packadd! supertab             " Tab to complete
     packadd! terminus             " Improved terminal integration
     packadd! vimwiki              " Organisation and notes
-    packadd! vim-one              " Light color scheme
+    " packadd! vim-one              " Light color scheme
     packadd! vim-clipper          " Integrate MacOS clipboard the lazy way
     packadd! vim-dispatch         " Async Git push
     packadd! vim-dispatch-neovim  " Use neovim's terminal emulator
