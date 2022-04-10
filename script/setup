@@ -12,6 +12,8 @@ git -C "$DOTFILESDIR" submodule update --init
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
+XDG_CONFIG_DIR=$HOME/.config
+
 if [ $UNIX ]
 then
   mkdir -p "$HOME/.config"
@@ -23,12 +25,13 @@ for DOTFILE in *; do
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
   echo "$DOTFILE" | grep -E -q '(^script/$|^docs/$|\.txt$|\.md$)' && continue
-  echo "$DOTFILE" | grep -E -q '(^karabiner/$)' &&
-    HOMEFILES=("$HOME/.config/${DOTFILE%/}")
+
+  echo "$DOTFILE" | grep -E -q '(^karabiner/$|^espanso/$)' &&
+    HOMEFILES=("$XDG_CONFIG_DIR/${DOTFILE%/}")
 
   # vim and neovim read the same configuration from different paths
   echo "$DOTFILE" | grep -E -q '(^vim/$)' &&
-    HOMEFILES+=("$HOME/.config/nvim")
+    HOMEFILES+=("$XDG_CONFIG_DIR/nvim")
 
   echo "$DOTFILE" | grep -q '\.sh' &&
     HOMEFILES=("$HOME/.$(echo "$DOTFILE" | sed -e 's/\.sh//')")
