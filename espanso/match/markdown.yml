@@ -1,0 +1,6 @@
+matches:
+  - trigger: ":details"
+    replace: |
+      <details><summary>$|$</summary>
+
+      </details>

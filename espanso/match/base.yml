@@ -1,0 +1,62 @@
+matches:
+  - trigger: ":today"
+    replace: "{{today}}"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ":dt"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%FT%T"
+  - trigger: ":dz"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%FT%T%:z"
+  - trigger: ":ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+  - regex: ":lastname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
+    replace: "{{names}}"
+    vars:
+      - name: names
+        type: shell
+        params:
+          cmd: >-
+            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            jq --raw-output '"\(.name.last)"' |
+            ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
+            shuf --head-count={{num}}
+  - regex: ":firstname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
+    replace: "{{names}}"
+    vars:
+      - name: names
+        type: shell
+        params:
+          cmd: >-
+            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            jq --raw-output '"\(.name.first)"' |
+            ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
+            shuf --head-count={{num}}
+  - regex: ":name\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
+    replace: "{{names}}"
+    vars:
+      - name: names
+        type: shell
+        params:
+          cmd: >-
+            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            jq --raw-output '"\(.name.first) \(.name.last)"' |
+            ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
+            shuf --head-count={{num}}

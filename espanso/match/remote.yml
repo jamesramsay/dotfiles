@@ -1,0 +1,41 @@
+matches:
+  - trigger: ":apply"
+    replace: |
+      Thanks for reaching out! 👋
+
+      The first step of the hiring process at Remote is to talk with a recruiter
+      who will be able answer many of your questions.
+
+      For fairness to all candidates please apply to the role of most interest.
+      Our wonderful recruiting team will be in touch!
+  - trigger: ":issue"
+    replace: |
+      ## :head_bandage: Problem to solve
+
+      $|$
+
+      ## :bulb: Proposal
+
+      /label ~"team::payroll_processing" ~"flow::definition"
+      /assign @jramsay
+  - trigger: ":epic"
+    replace: |
+      ## :head_bandage: Problem to solve
+
+      $|$
+
+      ## :bulb: Proposal
+
+      /label ~"team::payroll_processing" ~"flow::definition"
+      /assign @jramsay
+  - trigger: ":issue"
+    replace: |
+      ## :head_bandage: Problem to solve
+
+      $|$
+
+      ## :bulb: Proposal
+
+      /label ~"team::payroll_processing" ~"flow::definition"
+      /assign @jramsay
+

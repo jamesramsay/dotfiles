@@ -1,0 +1,5 @@
+# Data files can be regenerated
+data/*.json
+
+# Package contents
+match/packages
