@@ -27,28 +27,43 @@ matches:
         type: shell
         params:
           cmd: "curl 'https://api.ipify.org'"
-  - regex: ":lastname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
+
+  # Random Names
+  # :surname(count[,nationality=us])
+  # :fname(count[,nationality=us])
+  # :name(count[,nationality=us])
+  #
+  # Nationalities: us, au, etc
+  - regex: ":surname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
     replace: "{{names}}"
     vars:
       - name: names
         type: shell
         params:
           cmd: >-
-            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            NATIONALITY="us" &&
+            if [[ ! -z "$ESPANSO_NAT" ]]; then NATIONALITY="$ESPANSO_NAT"; fi &&
+
+            cat "$HOME/.config/espanso/data/users.$NATIONALITY.json" |
             jq --raw-output '"\(.name.last)"' |
             ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
             shuf --head-count={{num}}
-  - regex: ":firstname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
+
+  - regex: ":fname\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
     replace: "{{names}}"
     vars:
       - name: names
         type: shell
         params:
           cmd: >-
-            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            NATIONALITY="us" &&
+            if [[ ! -z "$ESPANSO_NAT" ]]; then NATIONALITY="$ESPANSO_NAT"; fi &&
+
+            cat "$HOME/.config/espanso/data/users.$NATIONALITY.json" |
             jq --raw-output '"\(.name.first)"' |
             ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
             shuf --head-count={{num}}
+
   - regex: ":name\\((?P<num>\\d+?)(,(?P<nat>[a-z]{2}))?\\)"
     replace: "{{names}}"
     vars:
@@ -56,7 +71,23 @@ matches:
         type: shell
         params:
           cmd: >-
-            cat $HOME/.config/espanso/data/users.{{nat}}.json |
+            NATIONALITY="us" &&
+            if [[ ! -z "$ESPANSO_NAT" ]]; then NATIONALITY="$ESPANSO_NAT"; fi &&
+
+            cat "$HOME/.config/espanso/data/users.$NATIONALITY.json" |
             jq --raw-output '"\(.name.first) \(.name.last)"' |
             ggrep -x -P '[\p{L}\p{N}\p{S}\s]*' |
             shuf --head-count={{num}}
+
+  # Random Hex Strings
+  # :slug(count[,bytes=4])
+  - regex: ":slug\\((?P<count>\\d+?)(,(?P<bytes>\\d+))?\\)"
+    replace: "{{slugs}}"
+    vars:
+      - name: slugs
+        type: shell
+        params:
+          cmd: >-
+            BYTES=4 &&
+            if [[ ! -z "$ESPANSO_BYTES" ]]; then BYTES="$ESPANSO_BYTES"; fi &&
+            repeat {{count}} { openssl rand -hex "$BYTES" }
