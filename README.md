@@ -44,6 +44,10 @@ A brief list of important dependencies, listed in full in the [`Brewfile`](brewf
 * [Clipper](https://wincent.com/products/clipper) for transparent access to the local system clipboard
 * Fixed-width font that includes the [Powerline glyphs](http://powerline.readthedocs.io/en/master/installation.html#fonts-installation).
 
+## Notes
+
+- `tmux-256color` - see https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
+
 ## License
 
 Unless otherwise noted, the contents of this repo are in the public domain. See the [LICENSE](LICENSE.md) for details.
