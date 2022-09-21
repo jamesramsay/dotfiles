@@ -17,13 +17,24 @@ function andSubdomains(patterns) {
   });
 }
 
+const googleMeetApp = {
+  browser: ({ urlString }) => ({
+    name: "Google Chrome",
+    // profile: "Profile 1",
+    args: [
+      `--app-id=kjgfgldnnfoeklkmfkjfagphfepbbdan`, // Google Meet PWA
+      `--app-launch-url-for-shortcuts-menu-item=${urlString}`,
+    ],
+  }),
+}
+
 module.exports = {
   defaultBrowser: "Safari",
   rewrite: [...decode.rewrite, slack.rewrite],
   handlers: [
     {
       match: () => finicky.getKeys().option,
-      browser: "Browserosaurus"
+      browser: "Velja"
     },
     {
       // Open Slack links in Slack
@@ -31,14 +42,19 @@ module.exports = {
       browser: "/Applications/Slack.app"
     },
     {
-      // Open Figma links in Figma
+      // Open Figma file links in Figma
       match: "www.figma.com/file/*",
       browser: "Figma",
     },
     {
-      // Open Zoom links in Zoom
+      // Open Zoom meeting links in Zoom
       match: andSubdomains("zoom.us/j/*"),
       browser: "us.zoom.xos"
+    },
+    {
+      // Open Google Meet meeting links in Meet PWA
+      match: finicky.matchHostnames(["meet.google.com"]),
+      ...googleMeetApp,
     },
     {
       // Open links from Slack in Chrome
@@ -64,6 +80,7 @@ module.exports = {
         "okta.com",
         "pitch.com",
         "zoom.us",
+        "figma.com",
       ])),
       browser: "Google Chrome"
     },
