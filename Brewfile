@@ -1,12 +1,9 @@
 cask_args appdir: '/Applications'
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "jamesramsay/extras"
 brew "clipper", restart_service: true
-brew "exa"
 brew "exiftool"
 brew "fd"
 brew "webp"
