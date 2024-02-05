@@ -7,7 +7,10 @@ My dotfiles for ZSH, tmux and vim, influenced by many, particularly [Greg Hurrel
 
 ## Usage
 
-Run [`script/setup`](script/setup) after checkout.
+1. Create an SSH key
+2. Clone the repo `git clone .... .dotfiles`
+3. Run [`script/setup`](script/setup) after checkout. (Warning: setup will nuke the newly created SSH key)
+4. Run `brew bundle --file=.dotfiles/Brewfile`
 
 This will symlink everything in this directory to your home directory.
 
@@ -39,8 +42,8 @@ A brief list of important dependencies, listed in full in the [`Brewfile`](brewf
 * [Alacritty](http://github.com/jwilm/alacritty/), the fastest terminal emulator.
 * [tmux](http://tmux.sourceforge.net/) 2.X or later.
 * [Neovim](https://neovim.io/) 0.3 or later.
-- [Zsh](http://www.zsh.org/) 5.6 or later.
-- [Git](http://git-scm.com/)
+* [Zsh](http://www.zsh.org/) 5.6 or later.
+* [Git](http://git-scm.com/)
 * [Clipper](https://wincent.com/products/clipper) for transparent access to the local system clipboard
 * Fixed-width font that includes the [Powerline glyphs](http://powerline.readthedocs.io/en/master/installation.html#fonts-installation).
 
